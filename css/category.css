@@ -1,0 +1,17 @@
+.link-out {
+	margin-top: -20px;
+    width: 100%;
+    height: auto;
+	color: gray;
+	cursor: pointer;
+}
+.link-out .link {
+    max-width: 1220px;
+    font-size: 14px;
+    padding: 15px;
+}
+.link-out .link a {
+    text-decoration: none;
+    margin-left: 0px;
+    color: gray;
+}

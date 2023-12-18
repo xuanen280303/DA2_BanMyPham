@@ -1,0 +1,148 @@
+.header_support{
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+}
+.header_support img{
+    width: 220px;
+    margin-left: 150px;
+    margin-top: -45px;
+    padding: 18px;
+    height: 120px;
+}
+.coverorder{
+    background-color:#E7EBEE;
+    height: 800px;
+    width: 100%;
+}
+.tonhat{
+    display: flex;
+    margin-left: 205px;
+}
+.bentrai{
+    margin-top: 10px;
+    width: 645px;
+    height: auto;
+}
+
+.bentren{
+    padding-top: 15px;
+    padding-left: 18px;
+    width: 645px;
+    height: 185px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+.thongtin{
+    font-size: 22px;
+    font-weight: bold;
+}
+.nharieng{
+    display: flex;
+}
+.tennguoinhan{
+    margin-left: 10px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+.diachi{
+    margin-top: 8px;
+    font-size: 17px;
+    color: #414242 ;
+}
+
+.vanchuyen{
+    margin-top: 20px;
+    padding-top: 15px;
+    padding-left: 18px;
+    width: 645px;
+    height: 140px;
+    border-radius: 10px;
+    background-color: #FFFFFF;  
+}
+.ghnhanh{
+    margin-top: 10px;
+}
+
+input[type="radio"] {
+    transform: scale(1.5);
+}
+
+.benduoi{
+    margin-top: 20px;
+    padding-top: 15px;
+    padding-left: 18px;
+    width: 645px;
+    height: 310px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+li{
+    margin-top: -13px;
+    margin-left: -22px;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+.benphai{
+    margin-left: 50px;
+    width: 383px;
+    height: auto;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+}
+.donhang{
+    margin-top: 15px;
+    margin-left: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+.sp1{
+    display: flex;
+    margin-left: 10px;
+    flex-direction: column;
+}
+.product-details {
+    display: flex;
+    align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+}
+.hinhanhsp {
+    margin-right: 10px; /* Thêm khoảng cách giữa ảnh và tiêu đề */
+}
+.tieude{
+    margin-top: 10px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.tamtinh{
+    display: flex;
+}
+.tamtinh1{
+    margin-left: 20px;
+}
+.giatien{
+    margin-left: 205px;
+}
+.thanhtienn{
+    margin-top: -25px;
+    display: flex;
+    font-size: 22px;
+    font-weight: bold;
+}
+.tieude{
+    margin-left: 20px;
+
+}
+.tien{
+    margin-top: 9px;
+    margin-left: 140px;
+    color: #FF6600;
+}
+.nhacnho{
+    margin-top: -28px;
+    margin-left: 20px;
+    color: #326E51;
+}

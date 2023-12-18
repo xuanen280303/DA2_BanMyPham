@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thống kê</title>
+    <link rel="icon" href="Hinhanh/logo1.jpg">
+    <link rel="stylesheet" href="/Admin/css/adminpage.css">
+    <link rel="stylesheet" href="/Admin/css/thongke.css">
+    <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/reset/reset2.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="phanthanto">
+        <div class="menubentrai">
+            <a class="header_support" href="index.html">
+                <img src="Hinhanh/logo1.jpg" alt="">
+            </a>    
+            <div class="danhsach">
+                <ul class="danhsach_ul">
+                    <a href="Adminpage.html" class="ds_link active">
+                        <i class="fa-solid fa-house-user"></i>
+                        <span class="ds_text" style="margin-left: 5px;">Trang chủ</span>
+                    </a>
+                    <a href="BaiViet.html" class="ds_link active">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span class="ds_text" style="margin-left: 5px;">Bài viết</span>
+                    </a>
+                    <a href="MyPham.html" class="ds_link active">
+                        <i class="fa-brands fa-product-hunt"></i>
+                        <span class="ds_text" style="margin-left: 11px;">Mỹ phẩm</span>
+                    </a>
+                    <a href="KhachHang.html" class="ds_link active">
+                        <i class="fa-solid fa-users" style="color: #ffffff;"></i>
+                        <span class="ds_text" style="margin-left: 6px;">Khách hàng</span>
+                    </a>
+                    <a href="NhaCungCap.html" class="ds_link active">
+                        <i class="fa-solid fa-truck-field"></i>
+                        <span class="ds_text" style="margin-left: 7px;">Nhà cung cấp</span>
+                    </a>        
+                    <a href="NhanVien.html" class="ds_link active">
+                        <i class="fa-regular fa-user"></i>
+                        <span class="ds_text" style="margin-left: 10px;">Nhân viên</span>
+                    </a>
+                    <a href="HoaDonNhap.html" class="ds_link active">
+                        <i class="fa-solid fa-money-bill"></i>
+                        <span class="ds_text" style="margin-left: 8px;">Hoá đơn nhập</span>
+                    </a>
+                    <a href="DonHangDat.html" class="ds_link active">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <span class="ds_text" style="margin-left: 14px;">Đơn hàng đặt</span>
+                    </a>
+                    <a href="ThongKe.html" class="ds_link active">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="ds_text" style="margin-left: 10px;">Thống kê</span>
+                    </a>
+                    <a href="#" class="ds_link active">
+                        <i class="fa-brands fa-instalod"></i>
+                        <span class="ds_text" style="margin-left: 10px;">Cài đặt</span>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div class="bodybenphai"> 
+            <div class="headerthongke">
+                <div style="display: flex;">
+                  <p style="font-size: 22px;">THỐNG KÊ</p>
+                </div>          
+                <img class="imgheader" src="./Hinhanh/icons8_Circle_Chart.svg" alt="#">
+            </div>
+
+            <div class="tongquatheader"> 
+                <div class="doanhthu" style="background-color: #01A6D6; width: 220px;">
+                    <div class="hinhanh">
+                        <img src="Hinhanh/icons8_Money_Bag_Pounds_1.svg" alt="">
+                    </div>                  
+                    <div class="tieude">
+                        <p style="margin-top: 15px;">Doanh thu</p>
+                        <p style="margin-top: 3px;">283.000.000đ</p>
+                    </div>
+                </div>
+                <div class="doanhthu" style="background-color: #59AF6D; width: 220px;">
+                    <div class="hinhanh">
+                        <img src="Hinhanh/icons8_Create_Order.svg" alt="">
+                    </div>                  
+                    <div class="tieude">
+                        <p style="margin-top: 15px;">Đơn hàng nhập: 500</p>
+                        <p style="margin-top: 3px;">Mỹ phẩm nhập: 825</p>
+                    </div>
+                </div>
+                <div class="doanhthu" style="background-color: #326E51; width: 220px;">
+                    <div class="hinhanh">
+                        <img src="Hinhanh/icons8_purchase_order.svg" alt="">
+                    </div>                  
+                    <div class="tieude">
+                        <p style="margin-top: 15px;">Đơn hàng đặt: 200</p>
+                        <p style="margin-top: 3px;">Mỹ phẩm bán: 250</p>
+                    </div>
+                </div>
+                <div class="doanhthu" style="background-color: #991B26; width: 220px;">
+                    <div class="hinhanh">
+                        <img src="Hinhanh/icons8_replace.svg" alt="">
+                    </div>                  
+                    <div class="tieude">
+                        <p style="margin-top: 15px;">Đơn hoàn trả</p>
+                        <p style="margin-top: 3px;">12</p>
+                    </div>
+                </div>         
+            </div>
+
+            <div class="luachon">
+                <label for="selectOption">Chọn loại thống kê:</label>
+                <select id="selectOption" onchange="showChart()">
+                    <option value="" disabled selected>Chọn loại thống kê</option>
+                    <option value="option1">Số lượng mỹ phẩm bán được</option>
+                    <option value="option2">Số lượng mỹ phẩm tồn trong kho</option>
+                    <option value="option3">Doanh thu theo tuần</option>
+                </select>           
+            </div>
+            <div style="width: 90%; margin-left: 90px; margin-top: 30px; height: 500px;">
+                <canvas id="myChart" width="1350" height="530" style="display: block; box-sizing: border-box; height: 500px; width: 1000px;"></canvas>
+            </div>          
+        </div>     
+    </div>  
+</body>
+<script src="js/thongke.js"></script>
+</html>

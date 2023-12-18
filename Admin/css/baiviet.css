@@ -1,0 +1,10 @@
+#tbody_baiviet tr td button {
+    width: 100%;
+    border: 0;
+    background-color: #FFFFFF;
+    height: 100%;
+    
+}
+#tbody_baiviet tr td button svg path:hover{
+  fill: #e00d0d;
+}

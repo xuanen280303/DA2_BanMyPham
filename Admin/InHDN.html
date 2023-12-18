@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="color: transparent;">IN HOÁ ĐƠN NHẬP</title>
+    <link rel="icon" href="Hinhanh/logo1.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        body {
+            width: 900px;
+            margin: 0 auto;
+        }
+
+        tr {
+            line-height: 27px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        .dam {
+            font-weight: bold;
+        }
+        .le {
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+        .kethop{
+            display: flex;
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+        .kethop1{
+            display: flex;
+            font-weight: bold;
+            margin-top: 30px;
+            font-size: 16px;
+        }
+        .kethop2{
+            display: flex;
+            font-style: italic;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+    
+<body ng-app="AppAdmin" ng-controller="inHDNController" ng-init="inHoaDonNhap()">
+    <section style="text-align: center; margin: 25px 0;">
+        <h1>HÓA ĐƠN NHẬP HÀNG</h1>
+    </section>
+    <div class="le dam">Tên đơn vị nhập hàng: Makeup Beauty Thỏ Ngọc</div>
+    <div class="le">Mã số thuế: 123456789</div>
+    <div class="le">Địa chỉ: Đình Cao, Phù Cừ, Hưng Yên</div>
+    <div class="kethop">
+        <p>Số điện thoại: 0987.233.625</p>
+        <p style="margin-left: 300px;">Số tài khoản: 6898928032003</p>
+    </div>
+    <div class="le dam">Tên đơn vị mua hàng: Cửa hàng Hasaki - Innisfree</div>
+    <div class="le">Mã nhân viên: {{listBill.maNV}}</div>
+    <div class="le">Mã nhà cung cấp: {{listBill.maNCC}}</div>
+    <div class="le">Họ tên cung cấp: {{listBill.hoTenNCC}}</div>
+    <div class="le">Số điện thoại: {{listBill.sdtncc}}</div>
+    <div class="kethop">
+        <p>Ghi chú: </p>
+        <p style="margin-left: 425px;">Số tài khoản: 0969588280</p>
+    </div>
+
+    <table style="margin-top: 30px;">
+        <tr style="background: #326E51; color: #fff;">
+            <th>Mã HDN</th>
+            <th>Mã mỹ phẩm</th>
+            <th>Tên mỹ phẩm</th>
+            <th>Số lượng</th>
+            <th>Giá nhập</th>
+            <th>Triết khấu</th>
+            <th>Tổng tiền</th>
+        </tr>
+        <tr ng-repeat="x in detailBill">
+            <td>{{x.maCTHDN}}</td>
+            <td>{{x.tenSanPham}}</td>
+            <td>{{x.tenSanPham}}</td>
+            <td>{{x.soLuong}}</td>
+            <td>{{x.giaNhap | number}}</td>
+            <td>{{x.Trietkhau | number}}</td>
+            <td>{{x.tongTien | number}}</td>
+        </tr>
+        <tr> 
+            <td colspan= "4" class="dam">Tổng tiền hóa đơn nhập</td>
+            <td class="dam">{{listBill.tongTien | number}}</td>
+        </tr>
+
+    </table>
+    <div class="kethop1">
+        <p style="margin-left: 153px;">Người mua hàng</p>
+        <p style="margin-left: 370px;">Người bán hàng</p>
+    </div>
+    <div class="kethop2">
+        <p style="margin-left: 150px;">(Ký, ghi rõ họ tên)</p>
+        <p style="margin-left: 365px;">(Ký, ghi rõ họ tên)</p>
+    </div>
+</body>
+<script src="angular/angular.min.js"></script>
+<script src="angular/globalAdmin.js"></script>
+<script src="angular/inhoadonnhap.js"></script>
+</html>

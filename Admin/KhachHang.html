@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý khách hàng</title>
+    <link rel="icon" href="Hinhanh/logo1.jpg">
+    <link rel="stylesheet" href="/Admin/css/adminpage.css">
+    <link rel="stylesheet" href="/Admin/css/nhanvien.css">
+    <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/reset/reset2.css">
+</head>
+<body>
+    <section class="header">
+        <div class="baoquat"> 
+            <a class="header_support" href="index.html">
+                <img src="Hinhanh/logo1.jpg" alt="">
+            </a>                    
+            <div class="admin" id="ad">
+                Xin chào, <span id="tenquanly">Admin</span> <i class="fas fa-sort-down"></i>
+                <div class="dangnhap" id="taikhoan">
+                    <button onclick="TaiKhoan()"><i class="fas fa-user-alt"></i> Tài khoản</button>
+                    <button onclick="Dangxuat();"><i class="fas fa-sign-out-alt"></i> Đăng xuất</button>
+                </div>
+            </div>
+        </div>       
+    </section>
+    <div class="phanthanto">
+        <div class="menubentrai">
+            <div class="danhsach">
+                <ul class="danhsach_ul">
+                    <a href="Adminpage.html" class="ds_link active">
+                        <i class="fa-solid fa-house-user"></i>
+                        <span class="ds_text" style="margin-left: 5px;">Trang chủ</span>
+                    </a>
+                    <a href="BaiViet.html" class="ds_link active">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span class="ds_text" style="margin-left: 5px;">Bài viết</span>
+                    </a>
+                    <a href="MyPham.html" class="ds_link active">
+                        <i class="fa-brands fa-product-hunt"></i>
+                        <span class="ds_text" style="margin-left: 11px;">Mỹ phẩm</span>
+                    </a>
+                    <a href="KhachHang.html" class="ds_link active">
+                        <i class="fa-solid fa-users" style="color: #ffffff;"></i>
+                        <span class="ds_text" style="margin-left: 6px;">Khách hàng</span>
+                    </a>
+                    <a href="NhaCungCap.html" class="ds_link active">
+                        <i class="fa-solid fa-truck-field"></i>
+                        <span class="ds_text" style="margin-left: 7px;">Nhà cung cấp</span>
+                    </a>
+                    <a href="NhanVien.html" class="ds_link active">
+                        <i class="fa-regular fa-user"></i>
+                        <span class="ds_text" style="margin-left: 10px;">Nhân viên</span>
+                    </a>
+                    <a href="HoaDonNhap.html" class="ds_link active">
+                        <i class="fa-solid fa-money-bill"></i>
+                        <span class="ds_text" style="margin-left: 8px;">Hoá đơn nhập</span>
+                    </a>
+                    <a href="DonHangDat.html" class="ds_link active">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <span class="ds_text" style="margin-left: 14px;">Đơn hàng đặt</span>
+                    </a>
+                    <a href="ThongKe.html" class="ds_link active">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="ds_text" style="margin-left: 10px;">Thống kê</span>
+                    </a>
+                    <a href="#" class="ds_link active">
+                        <i class="fa-brands fa-instalod"></i>
+                        <span class="ds_text" style="margin-left: 10px; ">Cài đặt</span>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div class="bodybenphai" id="main">  
+            <div class="nhap-thongtin">
+                <h3 class="text-header"><i class="fa-solid fa-pen-to-square" style="color: #ff6600;"></i>Nhập thông tin khách hàng</h3>
+                <form class="nhap-thongtin-sp">
+                    <label for="MaMP" class="txtmasp">ID Khách Hàng: </label>
+                    <input type="text" id="MaMP" style="width: 347px;" placeholder="Nhập id khách hàng...">
+
+                    <label for="TenMP" class="txtmasp">Tên khách hàng: </label>
+                    <input type="text" id="TenMP" style="width: 347px;" placeholder="Nhập tên khách hàng...">
+
+                    <label for="SDTNhacc" class="txtmasp">Số điện thoại: </label>
+                    <input type="text" id="Sdt" style="width: 347px;" placeholder="Nhập số điện thoại khách hàng...">
+
+                    <label for="Soluong" class="txtquantity">Địa chỉ: </label>
+                    <input type="text" id="Soluong" style="width: 347px;" placeholder="Nhập địa chỉ khách hàng...">
+
+                </form>
+
+                <div class="buttons">
+                    <button class="themnv"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Thêm</button>
+                    <button class="suanv"><i class="fa-solid fa-pen" style="margin-right: 5px;"></i>Sửa</button>
+                    <button class="capnhat"><i class="fa-solid fa-arrows-rotate" style="margin-right: 5px;"></i>Làm mới</button>
+                </div>
+            </div>
+
+            <div class="danhsach-mp">
+                <div class="header-ds">
+                    <h3 class="text-header"><i class="fa-solid fa-list-ul"></i> Danh sách khách hàng</h3>
+                </div>
+                <div class="search">
+                    <input type="text" placeholder="Nhập mã, tên khách hàng mà bạn muốn tìm kiếm...">
+                    <button><i class="fa-solid fa-magnifying-glass"></i>Tìm kiếm</button>
+                </div>
+
+                <table class="table-ds-sp">
+                    <thead>
+                        <tr style="font-weight: bold; height: 40px; font-size: 18px;">
+                            <th>
+                            </th>
+                            <th>ID khách hàng</th>
+                            <th>Tên khách hàng</th>
+                            <th>SDT</th>
+                            <th>Địa chỉ</th>
+                            <th>Tác vụ</th>  
+                        </tr>
+                    </thead>
+
+                    <tbody id="container-tabledata-table-tbody">
+                        <tr >
+                            <td class="check-sp">
+                                <input type="checkbox" name="check" id="chk-loai-sp">
+                            </td>
+                            <td class="col-mamp" style="padding-top: 10px;">KH01</td>
+                            <td class="col-tenmp" style="padding-top: 10px;">Trần Thị Xuân Én</td>
+                            <td class="col-quantity">0987233625</td>
+                            <td class="col-price">Phù Cừ, Hưng Yên</td>
+                            <td class="col-tacvu"><i class="fa-solid fa-trash-can"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="soluong">
+                    <div class="tong-soluong">
+                        <p>Số lượng khách hàng: </p>
+                        <small id="quantity" style="padding-top: 0px;margin-left: 6px;font-size: 1.1rem; color: #e76800;">1</small>
+                    </div>
+                    <div class="page">
+                        <button><i class="fa-solid fa-angles-left"></i></button>
+                        <button><i class="fa-solid fa-angle-left"></i></button>
+                        <button>1</i></button>
+                        <button>2</i></button>
+                        <button><i class="fa-solid fa-angle-right"></i></button>
+                        <button><i class="fa-solid fa-angles-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>       
+    </div>
+</body>
+</html>

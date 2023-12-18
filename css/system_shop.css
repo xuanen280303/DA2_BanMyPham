@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+body{
+    background-color: #F1F1F5;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+header {
+    position: fixed;
+    background-color: #fff;
+    width: 100%;
+    height: 70px;
+    top: 0;
+}
+.cover_support{
+    width: 98%;
+}
+.header_support{
+    background-color: white;
+    width: 50px;
+    height: 100%;
+    display: flex;
+}
+.header_support img{
+    width: 230px;
+    margin-top: -60px;
+    padding: 18px;
+    height: 200px;
+}
+.one_line{
+    justify-content: flex-end;
+    white-space: nowrap;
+    float: inline-end;
+    float: right;
+}
+.one_line:hover{
+    color: #0B7043;
+    cursor: pointer;
+}
+.background{   
+    background-size: cover;
+    color: white;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    height: auto;
+    margin: 70px auto;
+    width: 98%;
+}
+.khungtimkiem{
+    width: 100%;
+    background-image: url('/Images/lienhe.jpg');
+    height: 210px;
+    margin-bottom: 20px;
+}
+.link-out {
+    margin-top: -70px;
+    width: 100%;
+    height: auto;
+	color: gray;
+	cursor: pointer;
+}
+.link-out .link {
+    max-width: 1220px;
+    font-size: 14px;
+    padding: 15px;
+}
+.link-out .link a {
+    text-decoration: none;
+    margin-left: 0px;
+    color: gray;
+}
+.cover_system{
+    margin: 0 auto;
+	width: 98%;
+	height: auto;
+	background-color: white;
+	display: flex;
+}
+.system-trai{
+    width: 17%;
+	background-color: white;
+	height: 100%;
+	padding: 10px;
+}
+.system-phai{
+    width: 84%;
+	height: auto;
+	background-color: #ffffff;
+	border-left: 2px solid #F2F3F7;	
+}
+.info-system{
+    display: flex;
+    margin-top: -10px;
+    cursor: pointer;
+}
+.icons img{
+    margin-top: 10px;
+    width: 16px;
+    height: 16px;
+}
+.iconss img{
+    margin-top: 10px;
+    width: 25px;
+    height: 25px;
+}
+.icon-tittle{
+    color: #333;
+    margin-top: 15px;
+    padding-left: 9px;
+    font-size: 15.4px;
+}
+.icon-tittle:hover{
+    color: #FF6600;
+}
+.info-help{
+    margin-top: 20px;
+    padding-left: -20px;
+}
+.huongdan{
+    padding: 15px;
+}
+.huongdan ul{
+    list-style: square;
+    padding-right: 20px;
+}
+.huongdan li{
+    color: #333;
+    margin-top: 10px;
+    font-size: 15px;
+}
+.huongdan li:hover{
+    color: #FF6600;
+    cursor: pointer;
+}
+.bando{
+    padding: 25px 10px;
+}
+.bando img{
+    width: 100%;
+}
+.vitri{
+    padding: 10px;
+    display: flex;
+}
+.vitri_trai{
+    width: 50%;
+}
+.vitri_phai{
+    width: 50%;
+}
+.ten_thanhpho{
+    font-weight: bold;
+    font-size: 17px;
+}
+.quan_thanhpho{
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 15px;
+}
+.vitri_chitiet{
+    margin-top: 4px;
+    font-size: 14.8Hpx;
+}
+.luachon{
+    padding: 10px;
+    display: flex;
+}
+.luachon_tpho{
+    width: 260px;
+    height: 40px;
+    font-size: 15px;
+    border-color: gray;
+}
+.luachon_tpho:hover{
+    border-color: #01A6D6;
+}
+.luachon_quan{
+    margin-left: 30px;
+    width: 260px;
+    height: 40px;
+    font-size: 15px;
+    border-color: gray;
+}
+.luachon_quan:hover{
+    border-color: #01A6D6;
+}
+.timkiem{
+    margin-left: 30px;
+    width: 410px;
+    height: 40px;
+    font-size: 15px;
+    border-color: none;
+}
+.timkiem:hover{
+    border-color: #01A6D6;
+}
+.support_lienhe{
+    width: 50px; 
+    height: auto;
+    position: fixed;
+    top:50%;
+    right:-10px;
+    background-image: none;
+    background-color: rgba(0, 0, 0,0);
+    transition: right 0.5s ease-in-out;
+}
+.support_lienhe img{
+    background-color: rgba(0, 0, 0,0);
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    border-color: white;
+}
+.support_lienhe>div{
+    margin-top: 5px;
+    position: relative;
+    border: 2px solid #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+}
+.support_lienhe>div:hover{
+    box-shadow: 0px 5px 10px rgba(0, 0, 0,0.3);
+
+}
+.support_lienhe:hover{
+    right: 20px;
+}
+.help{
+    display: none;  
+    background-color: black;  
+    border-radius: 5px;
+    color: white;
+    height: 24px;
+    position: absolute;
+}
+.support_lienhe img:hover~.help{
+    display: block;
+}
+.footer{
+	/* display: grid; */
+	margin-top: 20px;
+	padding-left: 20px;
+	background-color: white;
+	display: flex;
+    height: 300px;
+}
+.footer-in{
+    padding-top: 20px;
+	display: flex;
+}
+.tieude1{
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+.footer1 {
+	flex-basis: 25%;
+	margin-left: 5px;
+}
+.anh_footer img{
+    width: 300px;
+    height: 70px;
+}
+.footer2 {
+	flex-basis: 30%;
+    margin-left: 100px;
+}
+.footer3{
+	flex-basis: 25%;
+    margin-left: 150px;
+}
+.footer4{
+
+	flex-basis: 20%;
+    margin-left: 190px;
+}
+.content0{
+    margin-top: 8px;
+	color: #FF6600;
+	font-size: 13px;
+}
+.content2{
+	margin-top: 8px;
+	font-size: 13px;
+}
+i{
+	margin: 5px;
+}
+.footer4-hinhanh{
+	display: flex;
+}
+.footer4-hinhanh_anhphu{
+	padding-top: 20px;
+	margin-left: 13px;
+}

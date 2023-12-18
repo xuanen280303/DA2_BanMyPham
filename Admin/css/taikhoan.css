@@ -1,0 +1,57 @@
+body {
+    background: url('../Hinhanh/taikhoan.jpg');
+    background-size: cover;
+    background-position: center top; /* Điều này đảm bảo hình ảnh hiển thị ở giữa phía trên */
+    font-size: 16px;
+    margin: 0; /* Loại bỏ margin mặc định của body */
+    padding: 0; /* Loại bỏ padding mặc định của body */
+}
+
+*{
+    margin: 0px;
+}
+
+
+.in4{
+    margin-left: 63px;
+    margin-top: -20px;
+    color: #326E51;
+    font-size: 18px;
+    font-weight: 800;
+}
+.thongtintk{
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+.tkhoan{
+    background-color: #FF6600;
+    border: 1px solid #FFFFFF;
+    height: 40px;
+    font-size: 15px;
+    color: rgb(253, 254, 255);
+}
+.in4chitiet{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 66px;
+    font-size: 18px;
+}
+.thongtin{
+    font-weight: bold;
+}
+.chitiet{
+    margin-left: 56px;
+}
+.doimatkhau{
+    margin-top: -60px;
+}
+.change{
+    margin-left: 1350px;
+    font-size: 16px;
+    color: #faf5f0;
+    background-color: #FF6600;
+    height: 40px;
+    border: 1px solid #FFFFFF;
+}
