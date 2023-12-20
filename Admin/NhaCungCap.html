@@ -6,25 +6,29 @@
     <title>Quản lý nhà cung cấp</title>
     <link rel="icon" href="Hinhanh/logo1.jpg">
     <link rel="stylesheet" href="/Admin/css/adminpage.css">
+    <link rel="stylesheet" href="/Admin/css/ncc.css">
     <link rel="stylesheet" href="/Admin/css/nhanvien.css">
-    <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/Admin/css/baiviet.css">
+    
+    <link rel="stylesheet" href="/fontawesome-free-6.4.0-web/css/all.css">
     <link rel="stylesheet" href="/reset/reset2.css">
+
+    <script src="angular/angular.min.js"></script>
+    <script src="angular/globalAdmin.js"></script>
+    <script src="angular/nhacungcap.js"></script>
 </head>
-<body>
+<body ng-app="AppAdmin"  ng-controller="NhaCC">
     <section class="header">
         <div class="baoquat"> 
             <a class="header_support" href="index.html">
                 <img src="Hinhanh/logo1.jpg" alt="">
-            </a>                    
-            <div class="admin" id="ad">
-                Xin chào, <span id="tenquanly">Admin</span> <i class="fas fa-sort-down"></i>
-                <div class="dangnhap" id="taikhoan">
-                    <button onclick="TaiKhoan()"><i class="fas fa-user-alt"></i> Tài khoản</button>
-                    <button onclick="Dangxuat();"><i class="fas fa-sign-out-alt"></i> Đăng xuất</button>
-                </div>
-            </div>
+            </a>    
+            <div class="headerbaiviet">
+                <div>
+                  <p style="font-size: 22px; margin-left: -460px;">QUẢN LÝ NHÀ CUNG CẤP</p>
+                </div>          
+                <img class="imgheader" src="./Hinhanh/icons8_Motorcycle_Delivery_Single_Box.svg" alt="#">
+            </div>                        
         </div>       
     </section>
     <div class="phanthanto">
@@ -79,26 +83,23 @@
                 <h3 class="text-header"><i class="fa-solid fa-pen-to-square" style="color: #ff6600;"></i>Nhập thông tin nhà cung cấp</h3>
                 <form class="nhap-thongtin-sp">
                     <label for="MaMP" class="txtmasp">Mã nhà cung cấp: </label>
-                    <input type="text" id="MaMP" style="width: 347px;" placeholder="Nhập mã nhà cung cấp...">
+                    <input type="text" id="MaNCC" style="width: 347px;" placeholder="Nhập mã nhà cung cấp...">
 
                     <label for="TenMP" class="txtmasp">Tên nhà cung cấp: </label>
-                    <input type="text" id="TenMP" style="width: 347px;" placeholder="Nhập tên nhà cung cấp...">
+                    <input type="text" id="TenNCC" style="width: 347px;" placeholder="Nhập tên nhà cung cấp...">
 
                     <label for="SDTNhacc" class="txtmasp">Số điện thoại: </label>
-                    <input type="text" id="Sdt" style="width: 347px;" placeholder="Nhập số điện thoại nhà cung cấp...">
+                    <input type="text" id="Sdtncc" style="width: 347px;" placeholder="Nhập số điện thoại nhà cung cấp...">
 
                     <label for="Soluong" class="txtquantity">Địa chỉ: </label>
-                    <input type="text" id="Soluong" style="width: 347px;" placeholder="Nhập địa chỉ nhà cung cấp...">
-
-                    <label for="Giaban" class="txtprice">Email: </label>
-                    <input type="text" id="Giaban" style="width: 347px;" placeholder="Nhập email nhà cung cấp...">
+                    <input type="text" id="Diachincc" style="width: 347px;" placeholder="Nhập địa chỉ nhà cung cấp...">
 
                 </form>
 
                 <div class="buttons">
-                    <button class="themnv"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Thêm</button>
-                    <button class="suanv"><i class="fa-solid fa-pen" style="margin-right: 5px;"></i>Sửa</button>
-                    <button class="capnhat"><i class="fa-solid fa-arrows-rotate" style="margin-right: 5px;"></i>Làm mới</button>
+                    <button onclick="ThemNhaCC()" class="themncc"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Thêm</button>
+                    <button id="btnUpdate" onclick="SuaNCC()"  class="suancc"><i class="fa-solid fa-pen" style="margin-right: 5px;"></i>Sửa</button>
+                    <button onclick="LamMoi()" class="lammoincc"><i class="fa-solid fa-arrows-rotate" style="margin-right: 5px;"></i>Làm mới</button>
                 </div>
 
             </div>
@@ -106,45 +107,47 @@
             <div class="danhsach-mp">
                 <div class="header-ds">
                     <h3 class="text-header"><i class="fa-solid fa-list-ul"></i> Danh sách nhà cung cấp</h3>
+                    <button ng-click="XoaChon()" style="margin-right: 35px; background-color: #ff6600;"><i class="far fa-trash-alt"></i> 
+                        Xóa chọn
+                    </button>
                 </div>
-                <div class="search">
-                    <input type="text" placeholder="Nhập mã, tên nhà cung cấp mà bạn muốn tìm kiếm...">
-                    <button><i class="fa-solid fa-magnifying-glass"></i>Tìm kiếm</button>
+                
+                <div class="search">   
+                    <input type="text" id="search-supplier" ng-model="tenncc" placeholder="Nhập mã, tên nhà cung cấp mà bạn muốn tìm kiếm...">
+                    <button id="btnSearch"><i class="fas fas fa-search"></i> Tìm kiếm</button>
                 </div>
 
                 <table class="table-ds-sp">
                     <thead>
                         <tr style="font-weight: bold; height: 40px; font-size: 18px;">
-                            <th>
-                            </th>
+                            <th style="padding-top: 10px;"><input type="checkbox" ng-click="CheckAll()" ng-model="selectAll"></th>
                             <th>Mã nhà cung cấp</th>
                             <th>Tên nhà cung cấp</th>
                             <th>SDT</th>
                             <th>Địa chỉ</th>
-                            <th>Email</th>
                             <th>Tác vụ</th>  
                         </tr>
                     </thead>
 
-                    <tbody id="container-tabledata-table-tbody">
-                        <tr >
-                            <td class="check-sp">
-                                <input type="checkbox" name="check" id="chk-loai-sp">
+                    <tbody> 
+                        <tr ng-repeat="ncc in listNCC">
+                            <td><input type="checkbox" ng-model="ncc.selected"></td>
+                            <td>{{ncc.maNCC}}</td>
+                            <td>{{ncc.hoTenNCC}}</td>
+                            <td>{{ncc.sdtncc}}</td>
+                            <td>{{ncc.diaChiNCC}}</td>                    
+                            <td style="text-align: center;">
+                                <i class="fas fa-edit" title="Sửa" data-mancc="{{ncc.maNCC}}" onclick="SuaNCCicon(this)"></i>
+                                <i class="fas fa-trash-alt" title="Xóa" data-mancc="{{ncc.maNCC}}"></i>
                             </td>
-                            <td class="col-mamp" style="padding-top: 10px;">NCC01</td>
-                            <td class="col-tenmp" style="padding-top: 10px;">Kem chống nắng</td>
-                            <td class="col-quantity">10</td>
-                            <td class="col-price">650.000đ</td>
-                            <td class="col-type">Kem chống nắng</td>
-                            <td class="col-tacvu"><i class="fa-solid fa-trash-can"></i></td>
                         </tr>
                     </tbody>
                 </table>
                 
                 <div class="soluong">
                     <div class="tong-soluong">
-                        <p>Số lượng nhà cung cấp: </p>
-                        <small id="quantity" style="padding-top: 0px;margin-left: 6px;font-size: 1.1rem; color: #e76800;">0</small>
+                        <p>Số lượng nhà cung cấp</p>
+                        <small id="quantity" style="padding-top: 0px;margin-left: 6px;font-size: 1.1rem; color: #e76800;"></small>
                     </div>
                     <div class="page">
                         <button><i class="fa-solid fa-angles-left"></i></button>

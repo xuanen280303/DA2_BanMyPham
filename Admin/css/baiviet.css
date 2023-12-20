@@ -1,9 +1,22 @@
+.headerbaiviet{
+  width: 100%;
+  background-image: linear-gradient(to right, #326E51, #59AF6D);
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 30px;
+  color: #fff;
+  
+}
+.imgheader{
+  width: 80px;
+}
 #tbody_baiviet tr td button {
-    width: 100%;
-    border: 0;
-    background-color: #FFFFFF;
-    height: 100%;
-    
+  width: 100%;
+  border: 0;
+  background-color: #FFFFFF;
+  height: 100%; 
 }
 #tbody_baiviet tr td button svg path:hover{
   fill: #e00d0d;

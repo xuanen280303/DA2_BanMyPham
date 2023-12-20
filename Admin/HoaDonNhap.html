@@ -7,6 +7,7 @@
     <link rel="icon" href="Hinhanh/logo1.jpg">
     <link rel="stylesheet" href="/Admin/css/adminpage.css">
     <link rel="stylesheet" href="/Admin/css/nhanvien.css">
+    <link rel="stylesheet" href="/Admin/css/baiviet.css">
     <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -18,12 +19,11 @@
             <a class="header_support" href="index.html">
                 <img src="Hinhanh/logo1.jpg" alt="">
             </a>                    
-            <div class="admin" id="ad">
-                Xin chào, <span id="tenquanly">Admin</span> <i class="fas fa-sort-down"></i>
-                <div class="dangnhap" id="taikhoan">
-                    <button onclick="TaiKhoan()"><i class="fas fa-user-alt"></i> Tài khoản</button>
-                    <button onclick="Dangxuat();"><i class="fas fa-sign-out-alt"></i> Đăng xuất</button>
-                </div>
+            <div class="headerbaiviet">
+                <div>
+                  <p style="font-size: 22px; margin-left: -460px;">QUẢN LÝ NHẬP HÀNG</p>
+                </div>          
+                <img class="imgheader" src="./Hinhanh/icons8_buy.svg" alt="#">
             </div>
         </div>       
     </section>
@@ -71,12 +71,20 @@
                         <i class="fa-brands fa-instalod"></i>
                         <span class="ds_text" style="margin-left: 10px; ">Cài đặt</span>
                     </a>
+                    <a href="Taikhoan.html" class="ds_link active">
+                        <i class="fa-solid fa-lock"></i>
+                        <span class="ds_text" style="margin-left: 10px; ">Account</span>
+                    </a>
+                    <a href="#" class="ds_link active">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span class="ds_text" style="margin-left: 10px; ">Đăng xuất</span>
+                    </a>
                 </ul>
             </div>
         </div>
         <div class="bodybenphai" id="main">  
             <div class="nhap-thongtin">
-                <h3 class="text-header"><i class="fa-solid fa-pen-to-square" style="color: #ff6600;"></i>Nhập thông tin nhà cung cấp</h3>
+                <h3 class="text-header"><i class="fa-solid fa-pen-to-square" style="color: #ff6600;"></i>Nhập thông tin hoá đơn nhập</h3>
                 <form class="nhap-thongtin-sp">
                     <label for="MaMP" class="txtmasp">Mã hoá đơn nhập: </label>
                     <input type="text" id="MaMP" style="width: 347px;" placeholder="Nhập mã hoá đơn nhập...">

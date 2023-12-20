@@ -1,17 +1,30 @@
 body{
-    background-image: linear-gradient(to right, #D6F9F5, #E5FBF1, #D6F9F5);
+    background-color: #fff;
 }
+.headerbaiviet{
+    width: 100%;
+    background-image: linear-gradient(to right, #326E51, #59AF6D);
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 30px;
+    color: #fff;
+    
+  }
+  .imgheader{
+    width: 80px;
+  }
 .bodybenphaimp{
     width: 83.4%;
     height: auto;
 }
 .phantren{
     width: 1250px;
+    box-shadow: 0 0 20px rgba(9, 219, 72, 0.5);
     height: 300px;
     margin-left: 30px;
     margin-top: 15px;
-    background-color: #FFFFFF;
-    border: 1px solid #E7EBEE;
     border-radius: 15px ;
 }
 .phantren1{
@@ -86,9 +99,8 @@ body{
     height: 500px;
     margin-left: 30px;
     margin-top: 15px;
-    background-color: #FFFFFF;
-    border: 1px solid #E7EBEE;
     border-radius: 15px ;
+    box-shadow: 0 0 30px rgba(86, 228, 129, 0.5);
 }
 
 .searchs { 
