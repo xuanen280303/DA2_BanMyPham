@@ -7,13 +7,17 @@
     <link rel="icon" href="Hinhanh/logo1.jpg">
     <link rel="stylesheet" href="/Admin/css/adminpage.css">
     <link rel="stylesheet" href="/Admin/css/nhanvien.css">
+    <link rel="stylesheet" href="/Admin/css/ncc.css">
     <link rel="stylesheet" href="/Admin/css/baiviet.css">
-    <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <link rel="stylesheet" href="/fontawesome-free-6.4.0-web/css/all.css">
     <link rel="stylesheet" href="/reset/reset2.css">
+
+    <script src="angular/angular.min.js"></script>
+    <script src="angular/globalAdmin.js"></script>
+    <script src="angular/khachhang.js"></script>
 </head>
-<body>
+<body ng-app="AppAdmin"  ng-controller="KhachHang">
     <section class="header">
         <div class="baoquat"> 
             <a class="header_support" href="index.html">
@@ -79,40 +83,42 @@
                 <h3 class="text-header"><i class="fa-solid fa-pen-to-square" style="color: #ff6600;"></i>Nhập thông tin khách hàng</h3>
                 <form class="nhap-thongtin-sp">
                     <label for="MaMP" class="txtmasp">ID Khách Hàng: </label>
-                    <input type="text" id="MaMP" style="width: 347px;" placeholder="Nhập id khách hàng...">
+                    <input type="text" id="IDKH" style="width: 347px;" placeholder="Nhập id khách hàng...">
 
                     <label for="TenMP" class="txtmasp">Tên khách hàng: </label>
-                    <input type="text" id="TenMP" style="width: 347px;" placeholder="Nhập tên khách hàng...">
+                    <input type="text" id="TenKH" style="width: 347px;" placeholder="Nhập tên khách hàng...">
 
                     <label for="SDTNhacc" class="txtmasp">Số điện thoại: </label>
-                    <input type="text" id="Sdt" style="width: 347px;" placeholder="Nhập số điện thoại khách hàng...">
+                    <input type="text" id="SDT" style="width: 347px;" placeholder="Nhập số điện thoại khách hàng...">
 
                     <label for="Soluong" class="txtquantity">Địa chỉ: </label>
-                    <input type="text" id="Soluong" style="width: 347px;" placeholder="Nhập địa chỉ khách hàng...">
+                    <input type="text" id="DiaChi" style="width: 347px;" placeholder="Nhập địa chỉ khách hàng...">
 
                 </form>
 
                 <div class="buttons">
-                    <button class="themnv"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Thêm</button>
-                    <button class="suanv"><i class="fa-solid fa-pen" style="margin-right: 5px;"></i>Sửa</button>
-                    <button class="capnhat"><i class="fa-solid fa-arrows-rotate" style="margin-right: 5px;"></i>Làm mới</button>
+                    <button onclick="ThemKH()" class="themncc" ><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Thêm</button>
+                    <button id="btnUpdate" onclick="SuaKH()" class="suancc"><i class="fa-solid fa-pen" style="margin-right: 5px;"></i>Sửa</button>
+                    <button onclick="LamMoi()" class="lammoincc"><i class="fa-solid fa-arrows-rotate" style="margin-right: 5px;"></i>Làm mới</button>
                 </div>
             </div>
 
             <div class="danhsach-mp">
                 <div class="header-ds">
                     <h3 class="text-header"><i class="fa-solid fa-list-ul"></i> Danh sách khách hàng</h3>
+                    <button ng-click="XoaChon()" style="margin-right: 35px; background-color: #ff6600;"><i class="far fa-trash-alt"></i> 
+                        Xóa chọn
+                    </button>
                 </div>
                 <div class="search">
-                    <input type="text" placeholder="Nhập mã, tên khách hàng mà bạn muốn tìm kiếm...">
-                    <button><i class="fa-solid fa-magnifying-glass"></i>Tìm kiếm</button>
+                    <input type="text" id="search-kh" ng-model="tenkh" placeholder="Nhập mã, tên khách hàng mà bạn muốn tìm kiếm...">
+                    <button id="btnSearch"><i class="fa-solid fa-magnifying-glass"></i>Tìm kiếm</button>
                 </div>
 
                 <table class="table-ds-sp">
                     <thead>
                         <tr style="font-weight: bold; height: 40px; font-size: 18px;">
-                            <th>
-                            </th>
+                            <th style="padding-top: 10px;"><input type="checkbox" ng-click="CheckAll()" ng-model="selectAll"></th>
                             <th>ID khách hàng</th>
                             <th>Tên khách hàng</th>
                             <th>SDT</th>
@@ -121,24 +127,25 @@
                         </tr>
                     </thead>
 
-                    <tbody id="container-tabledata-table-tbody">
-                        <tr >
-                            <td class="check-sp">
-                                <input type="checkbox" name="check" id="chk-loai-sp">
+                    <tbody> 
+                        <tr ng-repeat="kh in listKH">
+                            <td><input type="checkbox" ng-model="kh.selected"></td>
+                            <td>{{kh.idkh}}</td>
+                            <td>{{kh.hoTenKH}}</td>
+                            <td>{{kh.sdtkh}}</td>
+                            <td>{{kh.diaChiKH}}</td>                    
+                            <td style="text-align: center;">
+                                <i class="fas fa-edit" title="Sửa" data-idkh="{{kh.idkh}}" onclick="SuaKHicon(this)"></i>
+                                <i class="fas fa-trash-alt" title="Xóa" data-idkh="{{kh.idkh}}"></i>
                             </td>
-                            <td class="col-mamp" style="padding-top: 10px;">KH01</td>
-                            <td class="col-tenmp" style="padding-top: 10px;">Trần Thị Xuân Én</td>
-                            <td class="col-quantity">0987233625</td>
-                            <td class="col-price">Phù Cừ, Hưng Yên</td>
-                            <td class="col-tacvu"><i class="fa-solid fa-trash-can"></i></td>
                         </tr>
                     </tbody>
                 </table>
                 
                 <div class="soluong">
                     <div class="tong-soluong">
-                        <p>Số lượng khách hàng: </p>
-                        <small id="quantity" style="padding-top: 0px;margin-left: 6px;font-size: 1.1rem; color: #e76800;">1</small>
+                        <p>Số lượng khách hàng</p>
+                        <small id="quantity" style="padding-top: 0px;margin-left: 6px;font-size: 1.1rem; color: #e76800;"></small>
                     </div>
                     <div class="page">
                         <button><i class="fa-solid fa-angles-left"></i></button>
