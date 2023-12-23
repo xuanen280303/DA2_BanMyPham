@@ -2,13 +2,13 @@
     display: flex;
 }
 .nhap-thongtin{  
-    width: 30%; 
+    width: 25%; 
     padding-right: 24px; 
     margin-left: 25px;
 }
 
 .text-header{ 
-    margin: 12px 0 30px;
+    margin: 28px 0 30px;
     color: #FF6600; 
     font-size: 25px;
     border-bottom: 2px solid #FF6600; 
@@ -32,7 +32,7 @@
 
 .buttons { 
     border-top: 1px solid #333; 
-    width: 97%;  
+    width: 100%;  
     padding: 20px 0;  
     display: flex; 
     justify-content: space-between;
@@ -51,23 +51,26 @@
 .buttons button:hover { 
     opacity: 1;
 }
-
+.danhsach-mp{
+    margin-left: 20px;
+    width: 75%;
+}
 .themnv{ 
-    width: 110px;
+    width: 105px;
     height: 40px;
     font-size: 16px;
     background-color: #0B7043; 
     color: #fff;
 }
 .suanv{
-    width: 110px;
+    width: 100px;
     height: 40px;
     font-size: 16px;
     background-color: #FF6600; 
     color: #fff;
 }
 .capnhat{ 
-    width: 120px;
+    width: 135px;
     height: 40px;
     font-size: 16px;
     background-color: rgb(16, 108, 214); 

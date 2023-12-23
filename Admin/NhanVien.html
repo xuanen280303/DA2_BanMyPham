@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="/Admin/css/adminpage.css">
     <link rel="stylesheet" href="/Admin/css/nhanvien.css">
     <link rel="stylesheet" href="/Admin/css/baiviet.css">
-    <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/fontawesome-free-6.4.0-web/css/all.css">
     <link rel="stylesheet" href="/reset/reset2.css">
+
+    <script src="angular/angular.min.js"></script>
+    <script src="angular/globalAdmin.js"></script>
+    <script src="angular/nhanvien.js"></script>
 </head>
-<body>
+<body ng-app="AppAdmin"  ng-controller="NhanVien">
     <section class="header">
         <div class="baoquat"> 
             <a class="header_support" href="index.html">
@@ -79,26 +81,37 @@
                 <h3 class="text-header"><i class="fa-solid fa-pen-to-square" style="color: #ff6600;"></i>Nhập thông tin nhân viên</h3>
                 <form class="nhap-thongtin-sp">
                     <label for="MaMP" class="txtmasp">Mã nhân viên: </label>
-                    <input type="text" id="manv" style="width: 347px;" placeholder="Nhập mã nhân viên..">
-                    <label for="TenMP" class="txtmasp">Tên nhân viên: </label>
-                    <input type="text" id="tennv" style="width: 347px;" placeholder="Nhập tên nhân viên...">
+                    <input type="text" id="MaNV" style="width: 322px;" placeholder="Nhập mã nhân viên..">
+                    <label for="TenMP" class="txtmasp">Họ tên: </label>
+                    <input type="text" id="TenNV" style="width: 327px;" placeholder="Nhập tên nhân viên...">
+                    <label for="TenMP" class="txtmasp">Ngày/tháng/năm sinh nhân viên: </label>
+                    <input type="text" id="NgaySinh" style="width: 327px;" placeholder="Nhập ngày sinh nhân viên...">
+                    <label for="select-loai-sp">Giới tính: </label>
+                    <select name="select-loai-sp" id="GioiTinh" style="width: 348px;">
+                        <option value="choose">--Chọn giới tính</option>
+                        <option value="Việt Nam Naunau">Nam</option> 
+                        <option value="Việt Nam Vedette">Nữ</option>         
+                    </select>
 
                     <label for="select-loai-sp">Ca làm: </label>
-                    <select name="select-loai-sp" id="calam" style="width: 368px;">
+                    <select name="select-loai-sp" id="CaLam" style="width: 348px;">
                         <option value="choose">--Chọn ca làm</option>
                         <option value="Việt Nam Naunau">Fulltime</option> 
                         <option value="Việt Nam Vedette">Parttime</option>         
                     </select>
 
                     <label for="MaMP" class="txtmasp">Số điện thoại: </label>
-                    <input type="text" id="sdtnv" style="width: 347px;" placeholder="Nhập số điện thoại nhân viên...">
+                    <input type="text" id="SDT" style="width: 327px;" placeholder="Nhập số điện thoại nhân viên...">
                     <label for="Soluong" class="txtquantity">Địa chỉ: </label>
-                    <input type="text" id="diachinv" style="width: 347px;" placeholder="Nhập địa chỉ nhân viên...">
+                    <input type="text" id="DiaChi" style="width: 327px;" placeholder="Nhập địa chỉ nhân viên...">
+                    <label for="Soluong" class="txtquantity">Email: </label>
+                    <input type="text" id="Email" style="width: 327px;" placeholder="Nhập email nhân viên...">
+
                 </form>
                 <div class="buttons">
-                    <button id="themnv" class="themnv"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Thêm</button>
-                    <button id="suanv" class="suanv"><i class="fa-solid fa-pen" style="margin-right: 5px;"></i>Sửa</button>
-                    <button id="lammoinv" class="capnhat"><i class="fa-solid fa-arrows-rotate" style="margin-right: 5px;"></i>Làm mới</button>
+                    <button onclick="ThemNV()" class="themnv"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Thêm</button>
+                    <button id="btnUpdate" onclick="SuaNV()"  class="suanv"><i class="fa-solid fa-pen" style="margin-right: 5px;"></i>Sửa</button>
+                    <button onclick="LamMoi()" class="capnhat"><i class="fa-solid fa-arrows-rotate" style="margin-right: 5px;"></i>Làm mới</button>
                 </div>
 
             </div>
@@ -106,37 +119,45 @@
             <div class="danhsach-mp">
                 <div class="header-ds">
                     <h3 class="text-header"><i class="fa-solid fa-list-ul"></i> Danh sách nhân viên</h3>
+                    <button ng-click="XoaChon()" style="margin-right: 35px; background-color: #ff6600;"><i class="far fa-trash-alt"></i> 
+                        Xóa chọn
+                    </button>
                 </div>
                 <div class="search">
-                    <input type="text" placeholder="Nhập mã, tên nhân viên muốn tìm kiếm...">
-                    <button><i class="fa-solid fa-magnifying-glass"></i>Tìm kiếm</button>
+                    <input type="text" id="search-nv" ng-model="tennv" placeholder="Nhập mã, tên nhân viên muốn tìm kiếm...">
+                    <button id="btnSearch"><i class="fa-solid fa-magnifying-glass"></i>Tìm kiếm</button>
                 </div>
 
                 <table class="table-ds-sp">
                     <thead>
                         <tr style="font-weight: bold; height: 40px; font-size: 18px;">
-                            <th></th>
-                            <th>STT</th>
+                            <th style="padding-top: 10px;"><input type="checkbox" ng-click="CheckAll()" ng-model="selectAll"></th>
                             <th>Mã nhân viên</th>
-                            <th>Tên nhân viên</th>
+                            <th>Họ tên</th>
+                            <th>Ngày sinh</th>
+                            <th>Giới tính</th>
                             <th>Ca làm</th>
                             <th>SĐT</th>
                             <th>Địa chỉ</th>
+                            <th>Email</th>
                             <th>Tác vụ</th>  
                         </tr>
                     </thead>
-                    <tbody id="tbody_nhanvien">
-                        <tr style="height: 40px; font-size: 16px;">
-                            <td class="check-sp">
-                                <input type="checkbox" name="check" id="chk-loai-sp">
+                    <tbody> 
+                        <tr ng-repeat="nv in listNV">
+                            <td><input type="checkbox" ng-model="nv.selected"></td>
+                            <td>{{nv.maNV}}</td>
+                            <td>{{nv.hoTenNV}}</td>
+                            <td>{{nv.ngaySinh}}</td>
+                            <td>{{nv.gioiTinh}}</td>  
+                            <td>{{nv.caLam}}</td>
+                            <td>{{nv.sdtnv}}</td>
+                            <td>{{nv.diachiNV}}</td>
+                            <td>{{nv.email}}</td>                    
+                            <td style="text-align: center;">
+                                <i class="fas fa-edit" title="Sửa" data-manv="{{nv.maNV}}" onclick="SuaNVicon(this)"></i>
+                                <i class="fas fa-trash-alt" title="Xóa" data-manv="{{nv.maNV}}"></i>
                             </td>
-                            <td class="col-mamp" style="padding-top: 10px;">1</td>
-                            <td class="col-mamp" style="padding-top: 10px;">NV01</td>
-                            <td class="col-tenmp" >Trần Thu Trà</td>
-                            <td class="col-quantity">Fulltime</td>
-                            <td class="col-price">0987233625</td>
-                            <td class="col-type">Phù Cừ, Hưng Yên</td>
-                            <td class="col-tacvu"><i class="fa-solid fa-trash-can"></i></td>
                         </tr>
                     </tbody>
                 </table>
