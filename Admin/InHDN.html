@@ -59,7 +59,7 @@
     </style>
 </head>
     
-<body ng-app="AppAdmin" ng-controller="inHDNController" ng-init="inHoaDonNhap()">
+<body ng-app="AppAdmin" ng-controller="inHDN" ng-init="inHoaDonNhap()">
     <section style="text-align: center; margin: 25px 0;">
         <h1>HÓA ĐƠN NHẬP HÀNG</h1>
     </section>
@@ -82,26 +82,26 @@
 
     <table style="margin-top: 30px;">
         <tr style="background: #326E51; color: #fff;">
+            <th>Mã CTHDN</th>
             <th>Mã HDN</th>
             <th>Mã mỹ phẩm</th>
             <th>Tên mỹ phẩm</th>
             <th>Số lượng</th>
             <th>Giá nhập</th>
-            <th>Triết khấu</th>
-            <th>Tổng tiền</th>
+            <th>Thành tiền</th>
         </tr>
         <tr ng-repeat="x in detailBill">
             <td>{{x.maCTHDN}}</td>
-            <td>{{x.tenSanPham}}</td>
-            <td>{{x.tenSanPham}}</td>
-            <td>{{x.soLuong}}</td>
-            <td>{{x.giaNhap | number}}</td>
-            <td>{{x.Trietkhau | number}}</td>
-            <td>{{x.tongTien | number}}</td>
+            <td>{{x.maHDN}}</td>    
+            <td>{{x.maMP}}</td>
+            <td>{{x.tenMP}}</td>
+            <td>{{x.slNhap}}</td>
+            <td>{{x.dgNhap | number}}</td>
+            <td>{{x.thanhTien | number}}</td>
         </tr>
         <tr> 
             <td colspan= "4" class="dam">Tổng tiền hóa đơn nhập</td>
-            <td class="dam">{{listBill.tongTien | number}}</td>
+            <td class="dam">{{listBill.thanhTien | number}}</td>
         </tr>
 
     </table>

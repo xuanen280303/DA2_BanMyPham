@@ -1,17 +1,4 @@
 
-$(document).ready(function(){
-    $('#eye').click(function(){
-        $(this).toggleClass('Open');
-        $(this).children('i').toggleClass('fa-eye-slash fa-eye');
-        if($(this).hasClass('Open')){
-            $(this).prev().attr('type','text');           
-        }
-        else{
-            $(this).prev().attr('type','password');
-        }
-    });
-});
-
 document.getElementById("form-login").addEventListener("submit", function(event) {
     event.preventDefault(); // Ngăn chặn hành vi mặc định của việc submit form
     var username = document.getElementById("taikhoan").value;

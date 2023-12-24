@@ -73,6 +73,10 @@
                         <i class="fa-brands fa-instalod"></i>
                         <span class="ds_text" style="margin-left: 10px; ">Cài đặt</span>
                     </a>
+                    <a onclick="localStorage.setItem('user',null);window.location.href ='LoginAdmin.html' " class="ds_link active">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span class="ds_text" style="margin-left: 10px; ">Đăng xuất</span>
+                    </a>
                 </ul>
             </div>
         </div>
@@ -81,31 +85,21 @@
                 <h3 class="text-header"><i class="fa-solid fa-pen-to-square" style="color: #ff6600;"></i>Nhập thông tin nhân viên</h3>
                 <form class="nhap-thongtin-sp">
                     <label for="MaMP" class="txtmasp">Mã nhân viên: </label>
-                    <input type="text" id="MaNV" style="width: 322px;" placeholder="Nhập mã nhân viên..">
+                    <input type="text" id="MaNV" style="width: 347px;" placeholder="Nhập mã nhân viên..">
                     <label for="TenMP" class="txtmasp">Họ tên: </label>
-                    <input type="text" id="TenNV" style="width: 327px;" placeholder="Nhập tên nhân viên...">
+                    <input type="text" id="TenNV" style="width: 347px;" placeholder="Nhập tên nhân viên...">
                     <label for="TenMP" class="txtmasp">Ngày/tháng/năm sinh nhân viên: </label>
-                    <input type="text" id="NgaySinh" style="width: 327px;" placeholder="Nhập ngày sinh nhân viên...">
-                    <label for="select-loai-sp">Giới tính: </label>
-                    <select name="select-loai-sp" id="GioiTinh" style="width: 348px;">
-                        <option value="choose">--Chọn giới tính</option>
-                        <option value="Việt Nam Naunau">Nam</option> 
-                        <option value="Việt Nam Vedette">Nữ</option>         
-                    </select>
-
-                    <label for="select-loai-sp">Ca làm: </label>
-                    <select name="select-loai-sp" id="CaLam" style="width: 348px;">
-                        <option value="choose">--Chọn ca làm</option>
-                        <option value="Việt Nam Naunau">Fulltime</option> 
-                        <option value="Việt Nam Vedette">Parttime</option>         
-                    </select>
-
+                    <input type="text" id="NgaySinh" style="width: 347px;" placeholder="Nhập ngày sinh nhân viên...">
+                    <label for="MaMP" class="txtmasp">Giới tính: </label>
+                    <input type="text" id="GioiTinh" style="width: 347px;" placeholder="Nhập mã nhân viên..">
+                    <label for="MaMP" class="txtmasp">Ca làm: </label>
+                    <input type="text" id="CaLam" style="width: 347px;" placeholder="Nhập mã nhân viên..">
                     <label for="MaMP" class="txtmasp">Số điện thoại: </label>
-                    <input type="text" id="SDT" style="width: 327px;" placeholder="Nhập số điện thoại nhân viên...">
+                    <input type="text" id="SDT" style="width: 347px;" placeholder="Nhập số điện thoại nhân viên...">
                     <label for="Soluong" class="txtquantity">Địa chỉ: </label>
-                    <input type="text" id="DiaChi" style="width: 327px;" placeholder="Nhập địa chỉ nhân viên...">
+                    <input type="text" id="DiaChi" style="width: 347px;" placeholder="Nhập địa chỉ nhân viên...">
                     <label for="Soluong" class="txtquantity">Email: </label>
-                    <input type="text" id="Email" style="width: 327px;" placeholder="Nhập email nhân viên...">
+                    <input type="text" id="Email" style="width: 347px;" placeholder="Nhập email nhân viên...">
 
                 </form>
                 <div class="buttons">
@@ -113,7 +107,6 @@
                     <button id="btnUpdate" onclick="SuaNV()"  class="suanv"><i class="fa-solid fa-pen" style="margin-right: 5px;"></i>Sửa</button>
                     <button onclick="LamMoi()" class="capnhat"><i class="fa-solid fa-arrows-rotate" style="margin-right: 5px;"></i>Làm mới</button>
                 </div>
-
             </div>
 
             <div class="danhsach-mp">
@@ -132,7 +125,7 @@
                     <thead>
                         <tr style="font-weight: bold; height: 40px; font-size: 18px;">
                             <th style="padding-top: 10px;"><input type="checkbox" ng-click="CheckAll()" ng-model="selectAll"></th>
-                            <th>Mã nhân viên</th>
+                            <th>Mã NV</th>
                             <th>Họ tên</th>
                             <th>Ngày sinh</th>
                             <th>Giới tính</th>

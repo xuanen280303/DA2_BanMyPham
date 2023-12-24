@@ -1,5 +1,5 @@
 var app = angular.module('AppAdmin', []);
-app.controller("inHDNController", function ($scope, $http, $timeout) {
+app.controller("inHDN", function ($scope, $http, $timeout) {
     //-----------------------------IN HÓA ĐƠN NHẬP--------------------------------
     $scope.maHDN;
     $scope.listBill;
