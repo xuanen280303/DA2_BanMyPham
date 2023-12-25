@@ -1,3 +1,8 @@
+var _user = JSON.parse(localStorage.getItem("user"));
+if (!_user) {
+    window.location.href = "http://127.0.0.1:5503/Admin/login.html";
+}
+
 var app = angular.module('AppAdmin', []);
 app.controller("KhachHang", function ($scope, $http) {
     $scope.listKH;
@@ -7,6 +12,7 @@ app.controller("KhachHang", function ($scope, $http) {
         debugger;
         $http({
             method: 'POST',
+            headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
              data: { page: $scope.page, pageSize: $scope.pageSize },
             url:  current_url_ad + '/api/KhachHangControllers/search'
         }).then(function (response) {
@@ -22,6 +28,7 @@ app.controller("KhachHang", function ($scope, $http) {
         $scope.GetKhachHang = function () {
             $http({
                 method: 'POST',
+                headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: {
                     page: $scope.page,
                     pageSize: 20,
@@ -56,6 +63,7 @@ app.controller("KhachHang", function ($scope, $http) {
             }
             $http({
                 method: 'POST',
+                headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: dataToSend,
                 url: current_url_ad + '/api/KhachHangControllers/deleteS-khachhang',
             }).then(function(response) {
@@ -111,6 +119,7 @@ function ThemKH() {
 
     fetch(current_url_ad + '/api/KhachHangControllers/create-khachhang', {
         method: 'POST',
+        headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
             'Content-Type': 'application/json'
         },
@@ -158,6 +167,7 @@ function SuaKH() {
 
     fetch(current_url_ad + '/api/KhachHangControllers/update-khachhang', {
         method: 'POST',
+        headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
             'Content-Type': 'application/json'
         },
@@ -190,6 +200,7 @@ document.addEventListener('click', function (event) {
 function XoaKH(idkh) {
     fetch(current_url_ad + '/api/KhachHangControllers/delete-khachhang/' + idkh, {
         method: 'DELETE',
+        headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
             'Content-Type': 'application/json',
         },

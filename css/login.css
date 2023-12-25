@@ -10,7 +10,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-#form-login{
+.form-login{
     max-width: 500px;
     max-height: 600px;
     background: rgba(247, 250, 237, 0.8);

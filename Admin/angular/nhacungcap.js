@@ -1,3 +1,8 @@
+var _user = JSON.parse(localStorage.getItem("user"));
+if (!_user) {
+    window.location.href = "http://127.0.0.1:5503/Admin/login.html";
+}
+
 var app = angular.module('AppAdmin', []);
 app.controller("NhaCC", function ($scope, $http) {
     $scope.listNCC;
@@ -7,7 +12,8 @@ app.controller("NhaCC", function ($scope, $http) {
         debugger;
         $http({
             method: 'POST',
-             data: { page: $scope.page, pageSize: $scope.pageSize },
+            headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
+            data: { page: $scope.page, pageSize: $scope.pageSize },
             url:  current_url_ad + '/api/NhaCCControllers/search'
         }).then(function (response) {
             $scope.listNCC = response.data.data;
@@ -22,6 +28,7 @@ app.controller("NhaCC", function ($scope, $http) {
         $scope.GetNhaCC = function () {
             $http({
                 method: 'POST',
+                headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: {
                     page: $scope.page,
                     pageSize: 20,
@@ -57,6 +64,7 @@ app.controller("NhaCC", function ($scope, $http) {
 
             $http({
                 method: 'POST',
+                headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: dataToSend,
                 url: current_url_ad + '/api/NhaCCControllers/deleteS-nhacc',
             }).then(function(response) {
@@ -112,6 +120,7 @@ function ThemNhaCC() {
 
     fetch(current_url_ad + '/api/NhaCCControllers/create-nhacc', {
         method: 'POST',
+        headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
             'Content-Type': 'application/json'
         },
@@ -159,6 +168,7 @@ function SuaNCC() {
 
     fetch(current_url_ad + '/api/NhaCCControllers/update-nhacc', {
         method: 'POST',
+        headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
             'Content-Type': 'application/json'
         },
@@ -191,6 +201,7 @@ document.addEventListener('click', function (event) {
 function XoaNCC(maNCC) {
     fetch(current_url_ad + '/api/NhaCCControllers/delete-nhacc/' + maNCC, {
         method: 'DELETE',
+        headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
             'Content-Type': 'application/json',
         },

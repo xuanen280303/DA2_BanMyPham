@@ -1,3 +1,8 @@
+var _user = JSON.parse(localStorage.getItem("user"));
+if (!_user) {
+    window.location.href = "http://127.0.0.1:5503/Admin/login.html";
+}
+
 var app = angular.module('AppAdmin', []);
 app.controller("BaiViet", function ($scope, $http) {
     $scope.listBV;
@@ -6,6 +11,7 @@ app.controller("BaiViet", function ($scope, $http) {
     $scope.GetBaiViet = function () {
         $http({
             method: 'POST',
+            headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
             data: { page: $scope.page, pageSize: $scope.pageSize },
             url:  current_url_ad + '/api/BaiVietControllers/search'
         }).then(function (response) {
@@ -21,6 +27,7 @@ app.controller("BaiViet", function ($scope, $http) {
         $scope.GetBaiViet = function () {
             $http({
                 method: 'POST',
+                headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: {
                     page: $scope.page,
                     pageSize: 10,
@@ -56,6 +63,7 @@ app.controller("BaiViet", function ($scope, $http) {
 
             $http({
                 method: 'POST',
+                headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: dataToSend,
                 url: current_url_ad + '/api/BaiVietControllers/deleteS-baiviet',
             }).then(function(response) {
@@ -121,6 +129,7 @@ function ThemBV() {
     };
     fetch(current_url_ad + '/api/BaiVietControllers/create-baiviet', {
         method: 'POST',
+        headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
             'Content-Type': 'application/json'
         },
@@ -178,6 +187,7 @@ function SuaBV() {
 
     fetch(current_url_ad + '/api/BaiVietControllers/update-baiviet', {
         method: 'POST',
+        headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
             'Content-Type': 'application/json'
         },
@@ -210,6 +220,7 @@ document.addEventListener('click', function (event) {
 function XoaBV(maBV) {
     fetch(current_url_ad + '/api/BaiVietControllers/delete-baiviet/' + maBV, {
         method: 'DELETE',
+        headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
             'Content-Type': 'application/json',
         },

@@ -1,6 +1,6 @@
 var _user = JSON.parse(localStorage.getItem("user"));
 if (!_user) {
-    window.location.href = "http://127.0.0.1:5503/Admin/LoginAdmin.html";
+    window.location.href = "http://127.0.0.1:5503/Admin/login.html";
 }
 
 var app = angular.module('AppAdmin', []);
@@ -12,7 +12,7 @@ app.controller("NhanVien", function ($scope, $http) {
         debugger;
         $http({
             method: 'POST',
-            headers: { "Authorization": 'Bearer ' + _user.Token,"Content-Type": "application/json"},
+            headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
             data: { page: $scope.page, pageSize: $scope.pageSize },
             url:  current_url_ad + '/api/NhanVienControllers/search'
         }).then(function (response) {
@@ -28,7 +28,7 @@ app.controller("NhanVien", function ($scope, $http) {
         $scope.GetNhanVien = function () {
             $http({
                 method: 'POST',
-                headers: { "Authorization": 'Bearer ' + _user.Token,"Content-Type": "application/json"},
+                headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: {
                     page: $scope.page,
                     pageSize: 20,
@@ -63,7 +63,7 @@ app.controller("NhanVien", function ($scope, $http) {
             }
             $http({
                 method: 'POST',
-                headers: { "Authorization": 'Bearer ' + _user.Token,"Content-Type": "application/json"},
+                headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: dataToSend,
                 url: current_url_ad + '/api/NhanVienControllers/deleteS-nhanvien',
             }).then(function(response) {
@@ -143,7 +143,7 @@ function ThemNV() {
 
     fetch(current_url_ad + '/api/NhanVienControllers/create-nhanvien', {
         method: 'POST',
-        headers: { "Authorization": 'Bearer ' + _user.Token,"Content-Type": "application/json"},
+        headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
             'Content-Type': 'application/json'
         },
@@ -207,7 +207,7 @@ function SuaNV() {
 
     fetch(current_url_ad + '/api/NhanVienControllers/update-nhanvien', {
         method: 'POST',
-        headers: { "Authorization": 'Bearer ' + _user.Token,"Content-Type": "application/json"},
+        headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
             'Content-Type': 'application/json'
         },
@@ -240,7 +240,7 @@ document.addEventListener('click', function (event) {
 function XoaNV(manv) {
     fetch(current_url_ad + '/api/NhanVienControllers/delete-nhanvien/' + manv, {
         method: 'DELETE',
-        headers: { "Authorization": 'Bearer ' + _user.Token,"Content-Type": "application/json"},
+        headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
             'Content-Type': 'application/json',
         },
