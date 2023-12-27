@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="css/menu.css">  
     <link rel="stylesheet" href="css/product_details.css" />
     <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css" />
+    <script src="Angular/angular.min.js"></script>
+    <script src="Angular/global.js"></script>
+    <script src="Angular/chitiet.js"></script>
   </head>
-  <body>
+  <body ng-app="AppBanHang" ng-controller="ChitietCtrl">
     <div class="app">
       <div style="height: 50px; width: 100%; margin:auto;">
         <img  style="width: 100%;" src="Images/header.jpg" alt="#">
@@ -207,11 +210,11 @@
               <p>Chloé</p>
             </div>
             <div class="tittle1">
-              <p>Nước Hoa Nữ Chloé Love Story Eau De Parfum 75ml</p>
+              <p>{{mypham.tenMP}}</p>
             </div>
-            <div class="tittle2">
+            <!-- <div class="tittle2">
               <p>Love Story Eau De Parfum Spray</p>
-            </div>
+            </div> -->
             <div class="xephang1">
               <span class="star">&#9733;</span>
               <span class="star">&#9733;</span>
@@ -219,7 +222,10 @@
               <span class="star">&#9733;</span>
               <span class="star">&#9733;</span>
               <div class="xephang-number">
-                1 đánh giá | 0 Hỏi Đáp | Mã sản phẩm: 100390070
+                1 đánh giá | 0 Hỏi Đáp 
+              </div>
+              <div class="xephang-number">
+                <p>{{mypham.maMP}}</p>
               </div>
             </div>
             <div class="thanhngang">

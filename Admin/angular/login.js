@@ -3,12 +3,14 @@ function Login_admin() {
       username : document.getElementById('taikhoan').value,
       password:document.getElementById('matkhau').value
   };
+  //// Sử dụng AJAX để gửi yêu cầu đăng nhập đến API
     $.ajax({
       type: "POST",
       url: "https://localhost:44386/api/User/login",
+      //Ngăn jQuery chuyển đổi dữ liệu thành chuỗi truy vấn
       processData: false,
-        contentType: "application/json",  
-        data: JSON.stringify(dangnhap)    
+      contentType: "application/json",  
+      data: JSON.stringify(dangnhap)    
 
       }).done(function (data) {     
         if (data != null && data.message != null && data.message != 'undefined') {

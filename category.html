@@ -11,9 +11,12 @@
     <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css"> 
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/category.css"> 
+    <script src="Angular/angular.min.js"></script>
+    <script src="Angular/global.js"></script>
+    <script src="Angular/danhmuc.js"></script>
 
 </head>
-<body>
+<body ng-app="AppBanHang" ng-controller="TrangChu">
     <div class="app">
 		<div style="height: 50px; width: 100%; margin:auto;">
 			<img  style="width: 100%;" src="Images/hinhnen1.jpg" alt="#">
@@ -195,29 +198,24 @@
             <div class="menu-con"> 
                 <div>
                     <div class="tieude1">
-                        Thương hiệu
+                        Dưỡng Tóc
                     </div>
-                    <div class="content1">Innisfree (50)</div>
+                </div>
+                <div>
+                    <div class="content1">Mặt Nạ / Kem Ủ Tóc</div>
+                    <div class="content1">Serum / Dầu Dưỡng Tóc </div>
+                    <div class="content1">Xịt Dưỡng Tóc</div>
                 </div>
                 <div>
                     <div class="tieude1" style="margin-top: 30px;">
-                        Vấn đề về da
+                        Thương Hiệu
                     </div>
-                    <div class="content1">Da dầu, lỗ chân lông to (9) </div>
-                    <div class="content1">Da sạm, xỉn, không đều màu (6) </div>
-                    <div class="content1">Da khô, mất nước (3) </div>
-                    <div class="content1">Da mụn (2) </div>
-                </div>
-                <div>
-                    <div class="tieude1" style="margin-top: 30px;">
-                        Size
-                    </div>
-                    <div class="content1">Fullsize (32) </div>
-                    <div class="content1">Một miếng (10) </div>
-                    <div class="content1">Bộ sản phẩm (2) </div>
-                    <div class="content1">Minisize (1) </div>
-                    <div class="content1">Hộp (1) </div>
-                    <div class="content1">Chai vừa(200ml-400ml) (1) </div>
+                    <div class="content1">Minagenics (32) </div>
+                    <div class="content1">Ellip (10) </div>
+                    <div class="content1">Nuxe (2) </div>
+                    <div class="content1">Raise (1) </div>
+                    <div class="content1">Cocoon (1) </div>
+                    <div class="content1">L'Oereal Profetssional (1) </div>
                 </div>
                 <div>
                     <div class="tieude1" style="margin-top: 30px;">
@@ -331,14 +329,15 @@
 
                 <!-- SẢN PHẨM -->
                 <div class="products">
-                    <div class="product-sanpham">
-                        <img src="Images/sp1.png" alt="" class="sanpham-img">  
+
+                    <div class="product-sanpham" ng-repeat="mp in listGetDM">
+                        <img src="{{mp.anhDaiDien}}" alt="" class="sanpham-img">  
                         <div class="sanpham-price">
                             <div class="sanpham-giagoc">
-                                <p>120.000 <span class="dong">đ</span></p>                            
+                                <p>{{mp.giaMoi}}<span class="dong">đ</span></p>                            
                             </div>
                             <div class="sanpham-price-old">
-                                <p>150.000 <span class="dong">đ</span></p>    
+                                <p>{{mp.giaCu}}<span class="dong">đ</span></p>    
                             </div>
                             <div>
                                 <button class="sanpham-icon">23%</button>
@@ -348,7 +347,7 @@
                             <span>innisfree</span>
                         </div> 
                         <div class="sanpham-content">
-                            <p>Dầu L’Oréal Chiết Xuất Hoa Hồng 100ml<br>Elseve Extraordinary Oil Serum With Rose Oil</p>
+                            <p>{{mp.tenMP}}</p>
                         </div> 
                         <div class="xephang">
                             <span class="star">&#9733;</span>
@@ -374,6 +373,7 @@
                             Bill 399k tặng Bộ sản phẩm dưỡng ẩm da Green...
                         </div>      
                     </div>
+<!-- 
                     <div class="product-sanpham">
                         <img src="Images/sp2.png" alt="" class="sanpham-img">  
                         <div class="sanpham-price">
@@ -410,8 +410,8 @@
                         <div class="sanpham-combo">
                             Bill 399k tặng Bộ sản phẩm dưỡng ẩm da Green...
                         </div>    
-                    </div>
-                    <div class="product-sanpham">
+                    </div> -->
+                    <!-- <div class="product-sanpham">
                         <img src="Images/sp3.jpg" alt="" class="sanpham-img">  
                         <div class="sanpham-price">
                             <div class="sanpham-giagoc">
@@ -453,8 +453,8 @@
                         <div class="sanpham-combo">
                             Bill 399k tặng Bộ sản phẩm dưỡng ẩm da Green...
                         </div>                            
-                    </div>
-                    <div class="product-sanpham">
+                    </div> -->
+                    <!-- <div class="product-sanpham">
                         <img src="Images/sp4.png" alt="" class="sanpham-img">  
                         <div class="sanpham-price">
                             <div class="sanpham-giagoc">
@@ -1106,7 +1106,7 @@
                         <div class="sanpham-combo">
                             Bill 399k tặng Bộ sản phẩm dưỡng ẩm da Green...
                         </div>        
-                    </div>                          
+                    </div>                           -->
                 </div>
             </div>
     </div>       

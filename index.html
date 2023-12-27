@@ -9,11 +9,13 @@
     <title>Innisfree CHÍNH HÃNG GIÁ TỐT</title>
     <link rel="stylesheet" href="css/menu.css">  
     <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css">
-    <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css"> 
     <link rel="stylesheet" href="css/index.css">
+    <script src="Angular/angular.min.js"></script>
+    <script src="Angular/global.js"></script>
+    <script src="Angular/danhmuc.js"></script>
 
 </head>
-<body>
+<body ng-app="AppBanHang" ng-controller="TrangChu">
     <div class="app">
 		<div style="height: 50px; width: 100%; margin:auto;">
 			<img  style="width: 100%;" src="Images/hinhnen1.jpg" alt="#">
@@ -275,78 +277,15 @@
     </div>
 
     <!------------------------------------ DANH MỤC ------------------------------>
-    <div class="danhmucsanpham">
+    <div class="danhmucsanpham" >
         <div class="tendanhmuc">Danh mục</div>
         <div class="sanphams">
-            <div class="sanpham"style="background-color: #F9B294;">
+            <div class="sanpham"style="background-color: #F9B294;" ng-repeat="lmp in listDM">
                 <div class="khunganhsp">
-                    <a href="category.html"><img src="/Images/danhmuc1.jpg" alt="no"></a>           
+                    <a href="category.html?id={{lmp.maLoaiMP}}"><img src="{{lmp.anhDaiDien}}" alt="no"></a>           
                 </div>
-                <div class="tensanpham">Dưỡng Tóc</div>
-            </div>
-
-            <div class="sanpham" style="background-color: #FFEBAE;">
-                <div class="khunganhsp">
-                    <img src="/Images/danhmuc2.jpg" alt="no">
-                </div>
-                <div class="tensanpham" style="margin-left: 35px;">Dầu Gội</div>
-            </div>
-
-            <div class="sanpham"style="background-color: #B2D3C2;">
-                <div class="khunganhsp">
-                    <img src="/Images/danhmuc3.jpg" alt="no">
-                </div>
-                <div class="tensanpham">Dưỡng Thể</div>
-            </div>
-
-            <div class="sanpham"style="background-color: #E8F1EA;">
-                <div class="khunganhsp">
-                    <img src="/Images/danhmuc4.jpg" alt="no">
-                </div>
-                <div class="tensanpham" style="margin-left: 45px;">Toner</div>
-            </div>
-
-            <div class="sanpham"style="background-color: #F7DFDF;">
-                <div class="khunganhsp">
-                    <img src="/Images/danhmuc5.jpg" alt="no">
-                </div>
-                <div class="tensanpham">Nước Hoa</div>
-            </div>
-
-            <div class="sanpham"style="background-color: #F9B294;">
-                <div class="khunganhsp">
-                    <img src="/Images/danhmuc6.jpg" alt="no">
-                </div>
-                <div class="tensanpham" style="margin-left: 35px;">Son Môi</div>
-            </div>
-
-            <div class="sanpham"style="background-color: #FFEBAE;">
-                <div class="khunganhsp">
-                    <img src="/Images/danhmuc7.jpg" alt="no">
-                </div>
-                <div class="tensanpham" style="margin-left: 35px;">Kem Nền</div>
-            </div>
-
-            <div class="sanpham"style="background-color: #B2D3C2;">
-                <div class="khunganhsp">
-                    <img src="/Images/danhmuc8.jpg" alt="no">
-                </div>
-                <div class="tensanpham" style="margin-left: 50px;">Kem</div>
-            </div>
-
-            <div class="sanpham"style="background-color: #E8F1EA;">
-                <div class="khunganhsp">
-                    <img src="/Images/danhmuc9.jpg" alt="no">
-                </div>
-                <div class="tensanpham" style="margin-left: 15px;">Sữa Rửa Mặt</div>
-            </div>
-
-            <div class="sanpham"style="background-color: #F7DFDF;">
-                <div class="khunganhsp">
-                    <img src="/Images/danhmuc10.jpg" alt="no">
-                </div>
-                <div class="tensanpham" style="margin-left: 5px;">Nước Tẩy Trang</div>
-            </div>
+                <div class="tensanpham" style="margin-left: 5px;">{{lmp.tenLoaiMP}}</div>
+            </div>  
         </div>
     </div>
 
@@ -492,8 +431,8 @@
 
                 <!-- SẢN PHẨM -->
                 <div class="products">
-                    <div class="product-sanpham">
-                        <img src="Images/product1.jpg" alt="" class="sanpham-img">  
+                    <div class="product-sanpham" ng-repeat="x in listDM">
+                        <a href="productdetails.html?id={{x.maMP}}"><img src="Images/product1.jpg" alt="" class="sanpham-img"></a>   
                         <div class="sanpham-price">
                             <div class="sanpham-giagoc">
                                 <p>120.000 <span class="dong">đ</span></p>                            
