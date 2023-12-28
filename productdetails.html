@@ -14,7 +14,7 @@
     <script src="Angular/global.js"></script>
     <script src="Angular/chitiet.js"></script>
   </head>
-  <body ng-app="AppBanHang" ng-controller="ChitietCtrl">
+  <body ng-app="AppBanHang" ng-controller="ChiTietMyPham">
     <div class="app">
       <div style="height: 50px; width: 100%; margin:auto;">
         <img  style="width: 100%;" src="Images/header.jpg" alt="#">
@@ -196,12 +196,13 @@
         Perfum 75ml
       </div>
     </div>
-    <div class="details_products">
+
+    <div class="details_products" >
       <div class="bentrai">
         <div class="sanpham-bentrai">
           <div class="bentrai1">
             <div class="hinhanh">
-              <img src="Images/Nuochoa4.jpg" alt="" />
+              <img src="{{mypham.anhDaiDien}}" alt="" />
             </div>
           </div>
           <div class="bentrai2">
@@ -238,19 +239,21 @@
             </div>
             <div class="giasp">
               <div class="gia1">
-                <p>2.843.000 ₫</p>
+                <p>{{mypham.giaMoi}}</p>
               </div>
               <div class="mota">
                 <p>(Đã bao gồm VAT)</p>
               </div>
             </div>
             <div class="giathitruong">
-              <p>Giá thị trường: 4.290.000 ₫ - Tiết kiệm: 1.447.000 ₫</p>
+              <p>Giá thị trường:</p>
+              <p>{{mypham.giaCu}}</p>
+              <p>Tiết kiệm: 1.447.000 ₫</p>
               <p style="color: #ff6600">(-34%)</p>
             </div>
             <div class="dungtich">
               <p>Dung tích: 75ml</p>
-              <img src="Images/Nuochoa4.jpg" alt="" />
+              <img src="{{mypham.anhDaiDien}}" alt="" />
             </div>
             <div class="giaohang">
               <img src="Images/icon_nowfree.png" alt="" />

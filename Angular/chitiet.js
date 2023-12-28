@@ -1,5 +1,5 @@
 var app = angular.module('AppBanHang', []);
-app.controller("Chitiet", function ($scope, $http) {
+app.controller("ChiTietMyPham", function ($scope, $http) {
     $scope.mypham;  
     $scope.LoadMyPhambyID = function () { 
 		var key = 'id';

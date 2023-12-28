@@ -8,12 +8,15 @@
     <link rel="stylesheet" href="/Admin/css/adminpage.css">
     <link rel="stylesheet" href="/Admin/css/mypham.css">
     <link rel="stylesheet" href="/Admin/css/nhanvien.css">
-    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/css/all.min.css" />
+    <link rel="stylesheet" href="/fontawesome-free-6.4.0-web/css/all.css">
+    <link rel="stylesheet" href="/reset/reset2.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="/reset/reset2.css">
+    <script src="angular/angular.min.js"></script>
+    <script src="angular/globalAdmin.js"></script>
+    <script src="angular/mypham.js"></script>
 </head>
-<body>
+<body ng-app="AppAdmin"  ng-controller="MyPham">
     <section class="header">
         <div class="baoquat"> 
             <a class="header_support" href="index.html">
@@ -79,93 +82,115 @@
             </div>
         </div>
         <div class="bodybenphaimp">  
-            <div class="phantren">
+            <div class="phantren" style="height: 370px;">
                 <div class="phantren1">
                     <div class="nhap-thongtin">
                         <h3 class="text-header"><i class="fa-solid fa-pen-to-square" style="color: #ff6600;"></i>Nhập thông tin mỹ phẩm</h3>
-                        <form class="nhap-thongtin-sp">
-                            <label for="MaMP" class="txtmasp">Mã mỹ phẩm: </label>
-                            <input type="text" id="MaMP" style="width: 347px;" placeholder="Nhập mã mỹ phẩm...">
+                        <div class="nhap-thongtin-sp" style="margin-top: -16px;">
+                            <label for="MaMP" class="txtmasp" >Mã mỹ phẩm: </label>
+                            <input id="MaMP" type="text"  style="width: 347px;" placeholder="Nhập mã mỹ phẩm...">
+
+                            <label for="MaMP" class="txtmasp" >Tên mỹ phẩm: </label>
+                            <input id="TenMP" type="text"  style="width: 347px;" placeholder="Nhập tên mỹ phẩm...">
+
 
                             <label for="select-loai-sp">Mã loại mỹ phẩm: </label>
-                            <select name="select-loai-sp" id="loaimp">
+                            <select id="MaLoaiMP" name="select-loai-sp" style="width: 367px;" >
                                 <option value="choose">--Chọn loại mỹ phẩm</option>
-                                <option value="Kem chống nắng">Kem chống nắng</option>
-                                <option value="Son">Son</option>
-                                <option value="Nước tẩy trang">Nước tẩy trang</option>
-                                <option value="Sữa tắm">Sữa tắm</option>
-                                <option value="Toner">Toner</option>
-                                <option value="Nước hoa">Nước hoa</option>
-                                <option value="Cushion">Cushion</option>
-                                <option value="Dưỡng thể">Dưỡng thể</option>
-                                <option value="Phấn phủ">Phấn phủ</option>
-                                <option value="Ủ tóc">Ủ tóc</option>              
+                                <option value="L01">L01</option>
+                                <option value="L02">L02</option>
+                                <option value="L03">L03</option>
+                                <option value="L04">L04</option>  
+                                <option value="L05">L05</option>
+                                <option value="L06">L06</option>
+                                <option value="L07">L07</option>
+                                <option value="L08">L08</option>   
+                                <option value="L09">L09</option>
+                                <option value="L10">L10</option>       
                             </select>
 
-                        </form>                  
-                    </div>      
+                        </div>                  
+                    </div>  
                     <div class="nhap-thongtin">
                         <form class="nhap-thongtin-sp" style="margin-top: 80px;">
-                            <label for="TenMP" class="txtmasp">Tên mỹ phẩm: </label>
-                            <input type="text" id="TenMP" style="width: 347px;" placeholder="Nhập tên mỹ phẩm...">         
-                            <label for="hinhanh" class="txt-enterimg">Hình Ảnh: </label>
-                        <input type="file" id="ImgMp"  style="width: 347px;">
-                        </form>                  
-                    </div>   
-                    <div class="nhap-thongtin">
-                        <form class="nhap-thongtin-sp" style="margin-top: 80px;">
+                            <label for="MaMP" class="txtmasp">Giá bán: </label>
+                            <input type="text" id="GiaMoi" style="width: 347px;" placeholder="Nhập giá bán của mỹ phẩm...">
+                            <label for="MaMP" class="txtmasp">Giá nhập: </label>
+                            <input type="text" id="GiaCu" style="width: 347px;" placeholder="Nhập giá nhập của mỹ phẩm...">
                             <label for="MaMP" class="txtmasp">Số lượng: </label>
-                            <input type="text" id="solg" style="width: 347px;" placeholder="Nhập số lượng mỹ phẩm...">
-                            <label for="TenMP" class="txtmasp">Mô tả: </label>
-                            <input type="text" id="mota" style="width: 347px;" placeholder="Nhập mô tả mỹ phẩm...">  
+                            <input type="text" id="SL" style="width: 347px;" placeholder="Nhập số lượng mỹ phẩm...">
                         </form>                  
                     </div>  
+
+                    <div class="nhap-thongtin">
+                        <form class="nhap-thongtin-sp" style="margin-top: 80px;">
+                            <label for="TenMP" class="txtmasp">Hình ảnh: </label>
+                            <input id="HinhAnh" type="file"  style="width: 347px;" placeholder="Nhập hình ảnh mỹ phẩm...">   
+                            <label for="TenMP" class="txtmasp">Mô tả: </label>
+                            <input id="MoTa" type="text"  style="width: 347px;" placeholder="Nhập mô tả mỹ phẩm...">   
+                            <label for="TenMP" class="txtmasp">Ghi chú: </label>
+                            <input id="GhiChu" type="text"  style="width: 347px;" placeholder="Nhập ghi chú mỹ phẩm...">               
+                            <!-- <label for="hinhanh" class="txt-enterimg">Hình Ảnh: </label>
+                            <input type="file" id="ImgMp"  style="width: 347px;"> -->
+                        </form>                  
+                    </div>   
+                    
                 </div>            
-                <div class="cacbuttons">
-                    <button id="them" class="themmp"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Thêm</button>
-                    <button id="sua" class="suamp"><i class="fa-solid fa-pen" style="margin-right: 5px;"></i>Sửa</button>
-                    <button id="lammoi" class="capnhatmp"><i class="fa-solid fa-arrows-rotate" style="margin-right: 5px;"></i>Làm mới</button>
+                <div class="cacbuttons" style="margin-top: 70px;">
+                    <button ng-click="ThemMP()" class="themmp"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Thêm</button>
+                    <button id="btnUpdate" onclick="SuaMP()"  class="suamp"><i class="fa-solid fa-pen" style="margin-right: 5px;"></i>Sửa</button>
+                    <button onclick="LamMoi()"  class="capnhatmp"><i class="fa-solid fa-arrows-rotate" style="margin-right: 5px;"></i>Làm mới</button>
                 </div> 
             </div>  
             
-            <div class="phanduoi">
+            <div class="phanduoi" style="height: 450px;">
                 <div class="header-ds">
                     <h3 class="text-header" style="margin-left: 20px;"><i class="fa-solid fa-list-ul"></i> Danh sách mỹ phẩm</h3>
+                    <button ng-click="XoaChon()" style="margin-right: 35px; background-color: #ff6600;"><i class="far fa-trash-alt"></i> 
+                        Xóa chọn
+                    </button>
                 </div>
                 <div class="searchs">
                     <input type="text" placeholder="Nhập mã, tên mỹ phẩm mà bạn muốn tìm kiếm..." style="width: 2000px;">
-                    <button style="margin-left: 20px;"><i class="fa-solid fa-magnifying-glass"></i>Tìm kiếm</button>
+                    <button id="btnSearch" style="margin-left: 20px;"><i class="fa-solid fa-magnifying-glass"></i>Tìm kiếm</button>
                 </div>
 
                 <table class="table-ds-sp" style="margin-left: 20px;">
                     <thead>
                         <tr style="font-weight: bold; height: 40px; font-size: 18px;">
-                            <th></th>
-                            <th>STT</th>
-                            <th>Mã mỹ phẩm</th>
+                            <th style="padding-top: 10px;"><input type="checkbox" ng-click="CheckAll()" ng-model="selectAll"></th>
+                            <th>Mã MP</th>
                             <th>Tên mỹ phẩm</th>
-                            <th>Mã loại mỹ phẩm</th>
-                            <th>Hình ảnh</th>
+                            <th>Mã loại</th>
+                            <th>Giá bán</th>
+                            <th>Giá nhập</th>
                             <th>Số lượng</th>
+                            <th>Hình ảnh</th>
                             <th>Mô tả</th>
+                            <th>Ghi chú</th>
                             <th>Tác vụ</th>  
                         </tr>
                     </thead>
-                    <tbody id="tbody_mypham">
-                        <tr style="height: 40px; font-size: 16px;">
-                            <td class="check-sp">
-                                <input type="checkbox" name="check" id="chk-loai-sp">
+
+                     <tbody> 
+                        <tr ng-repeat="mp in listMP">
+                            <td><input type="checkbox" ng-model="mp.selected"></td>
+                            <td>{{mp.maMP}}</td>
+                            <td>{{mp.tenMP}}</td>
+                            <td>{{mp.maLoaiMP}}</td>
+                            <td>{{mp.giaMoi}}</td>    
+                            <td>{{mp.giaCu}}</td>
+                            <td>{{mp.slTon}}</td>  
+                            <td><img src="{{host+'/'+mp.anhDaiDien}}" alt="Lỗi r" width="70px" height="70px"></td>    
+                            <td>{{mp.moTa}}</td>
+                            <td>{{mp.ghiChu}}</td>               
+                            <td style="text-align: center;">
+                                <i class="fas fa-edit" title="Sửa" data-mamp="{{mp.maMP}}" onclick="SuaMPicon(this)"></i>
+                                <i class="fas fa-trash-alt" title="Xóa" data-mamp="{{mp.maMP}}"></i>
                             </td>
-                            <td style="padding-top: 10px;">1</td>
-                            <td style="padding-top: 10px;">MP01</td>
-                            <td >Kem chống nắng Skin</td>
-                            <td>L10</td>
-                            <td></td>
-                            <td>28</td>
-                            <td>Dịu nhẹ</td>
-                            <td><i class="fa-solid fa-trash-can"></i></td>
-                        </tr>                      
+                        </tr>
                     </tbody>
+
                 </table>
                 <div class="soluong">
                     <div class="tong-soluong">
@@ -173,11 +198,11 @@
                     </div>
                     <div class="page">
                         <button><i class="fa-solid fa-angles-left"></i></button>
-                        <button><i class="fa-solid fa-angle-left"></i></button>
-                        <button>1</i></button>
-                        <button>2</i></button>
-                        <button><i class="fa-solid fa-angle-right"></i></button>
-                        <button><i class="fa-solid fa-angles-right"></i></button>
+                        <button ng-click="changePage('prev')"><i class="fa-solid fa-angle-left"></i></button>
+                        <button  ng-click="changePage(page)" ng-class="{ 'active-page': currentPage === page }">{{
+                            page }}</button>
+                        <button ng-click="changePage('next')"><i class="fa-solid fa-angle-right"></i></button>
+                        <button ><i class="fa-solid fa-angles-right"></i></button>
                     </div>
                 </div>
 
@@ -186,5 +211,4 @@
     </div>       
 </div> 
 </body>
-<script src="js/MyPham.js"></script>
 </html>
