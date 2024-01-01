@@ -62,9 +62,9 @@
                     </div>
                     <div class="header__search">
                         <div class="header__search-input-wrap">								
-                            <input type="text" class="header__search-input" placeholder="Tìm sản phẩm, thương hiệu bạn mong muốn...">
+                            <input ng-model="key" type="text" class="header__search-input" placeholder="Tìm sản phẩm, thương hiệu bạn mong muốn...">
                         </div>	
-                        <button class="header__search-btn">
+                        <button ng-click="TimKiemMyPham(key)" class="header__search-btn">
                             <i class="fas fa-search header__search-btn-icon"></i>
                         </button>	
                     </div>
@@ -331,7 +331,7 @@
                 <div class="products">
 
                     <div class="product-sanpham" ng-repeat="mp in listGetDM">
-                        <a href="productdetails.html?id={{mp.maMP}}"><img src="{{mp.anhDaiDien}}" alt="" class="sanpham-img"></a>                       
+                        <a href="productdetails.html?id={{mp.maMP}}"><img src="{{host+'/'+mp.anhDaiDien}}" alt="" class="sanpham-img"></a>                       
                         <div class="sanpham-price">
                             <div class="sanpham-giagoc">
                                 <p>{{mp.giaMoi}}<span class="dong">đ</span></p>                            

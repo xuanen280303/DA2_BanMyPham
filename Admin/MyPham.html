@@ -31,7 +31,7 @@
         </div>       
     </section>
     <div class="phanthanto">
-        <div class="menubentrai">
+        <div class="menubentrai" style="height: auto;">
             <div class="danhsach">
                 <ul class="danhsach_ul">
                     <a href="Adminpage.html" class="ds_link active">
@@ -130,20 +130,18 @@
                             <input id="MoTa" type="text"  style="width: 347px;" placeholder="Nhập mô tả mỹ phẩm...">   
                             <label for="TenMP" class="txtmasp">Ghi chú: </label>
                             <input id="GhiChu" type="text"  style="width: 347px;" placeholder="Nhập ghi chú mỹ phẩm...">               
-                            <!-- <label for="hinhanh" class="txt-enterimg">Hình Ảnh: </label>
-                            <input type="file" id="ImgMp"  style="width: 347px;"> -->
                         </form>                  
                     </div>   
                     
                 </div>            
                 <div class="cacbuttons" style="margin-top: 70px;">
                     <button ng-click="ThemMP()" class="themmp"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Thêm</button>
-                    <button id="btnUpdate" onclick="SuaMP()"  class="suamp"><i class="fa-solid fa-pen" style="margin-right: 5px;"></i>Sửa</button>
+                    <button id="btnUpdate" ng-click="SuaMP()"  class="suamp"><i class="fa-solid fa-pen" style="margin-right: 5px;"></i>Sửa</button>
                     <button onclick="LamMoi()"  class="capnhatmp"><i class="fa-solid fa-arrows-rotate" style="margin-right: 5px;"></i>Làm mới</button>
                 </div> 
             </div>  
             
-            <div class="phanduoi" style="height: 450px;">
+            <div class="phanduoi" style="height: 570px;">
                 <div class="header-ds">
                     <h3 class="text-header" style="margin-left: 20px;"><i class="fa-solid fa-list-ul"></i> Danh sách mỹ phẩm</h3>
                     <button ng-click="XoaChon()" style="margin-right: 35px; background-color: #ff6600;"><i class="far fa-trash-alt"></i> 
@@ -181,7 +179,7 @@
                             <td>{{mp.giaMoi}}</td>    
                             <td>{{mp.giaCu}}</td>
                             <td>{{mp.slTon}}</td>  
-                            <td><img src="{{host+'/'+mp.anhDaiDien}}" alt="Lỗi r" width="70px" height="70px"></td>    
+                            <td><img src="{{host+'/'+mp.anhDaiDien}}" alt="no" width="70px" height="70px"></td>    
                             <td>{{mp.moTa}}</td>
                             <td>{{mp.ghiChu}}</td>               
                             <td style="text-align: center;">

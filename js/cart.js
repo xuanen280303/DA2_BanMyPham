@@ -9,11 +9,12 @@ var da = localStorage.getItem("mylist")
 if (da) {
     mylist = JSON.parse(da)
 } else {
-    mylist = ["2", "3"]
+    mylist = []
 }
 reload()
 
 function reload() {
+    
     $('.listsp').empty()
     var htmll = mylist.map((sp, index) => `
         <div class="sanpham1">
@@ -100,4 +101,5 @@ function sumsum() {
     document.getElementById("giatien2xx").innerHTML = tongtien.toLocaleString() + " <span class=\"dong\">đ</span>";
     document.getElementById("giatien1").innerHTML = tongtien.toLocaleString() + " <span class=\"dong\">đ</span>";
 }
+sumsum()
 

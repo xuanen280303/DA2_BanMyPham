@@ -10,8 +10,12 @@
     <link rel="stylesheet" href="css/cart.css"> 
     <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css" />
     <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="Angular/angular.min.js"></script>
+    <script src="Angular/global.js"></script>
+    <script src="Angular/giohang.js"></script>
+   
 </head>
-<body>
+<body ng-app="AppBanHang" ng-controller="GioHang">
     <div class="app">
 		<div style="height: 50px; width: 100%; margin:auto;">
 			<img  style="width: 100%;" src="Images/header.jpg" alt="#">
@@ -202,15 +206,20 @@
 			 </div>			
 		</nav>		
 	</div>
+
     <div class="baoquatgiohang" style="background-color: #F3F3F3;">
         <div class="link-out">
             <div class="link" style="margin-top: 15px">
                 <a href="index.html">Trang chủ </a>
                 <i class="fas fa-caret-right"></i> Giỏ hàng    
             </div>
-            <div class="thongtin">
-                Giỏ hàng của bạn
+            <div style="display: flex;">
+                <div class="thongtin">
+                    Giỏ hàng của bạn
+                </div>
+                <button class="xoahet" ng-click="clearCart()">Xóa hết giỏ hàng</button>
             </div>
+            
             <div class="thongtinsp">
                 <div class="chitietsp">
                     <div class="sp">Sản phẩm</div>
@@ -229,8 +238,9 @@
                         <div class="tamtinh1">
                             <p>Tạm tính:</p>
                         </div>
-                        <div class="giatien2">
-                            <p id="giatien2xx">0<span class="dong">đ</span></p>
+                        <div class="giatien2" style="display: flex;">
+                            <p id="totalPrice" ng-bind="TongTienHoaDon() | currency:'':'0'"><span class="dong">đ</span></p>
+                            <span ng-bind="'\u20AB'"></span>
                         </div>
                     </div>
                     <div class="tamtinhhd" style="margin-top: 8px;">
@@ -246,8 +256,9 @@
                         <div class="tamtinh1">
                             <p>Tổng cộng:</p>
                         </div>
-                        <div class="giatien2" style="margin-left: 160px;">
-                            <p id="giatien2x" style="color: #FF6600;">0<span class="dong" style="color: #FF6600;">đ</span></p>
+                        <div class="giatien2" style="margin-left: 160px; display: flex;" >
+                            <p id="totalPrice" ng-bind="TongTienHoaDon() | currency:'':'0'" style="color: #FF6600;"><span class="dong" style="color: #FF6600;">đ</span></p>
+                            <span ng-bind="'\u20AB'" style="color: #FF6600;"></span>
                         </div>
                     </div>
                     <div class="tamtinhhd" style="margin-top: 11px;">
@@ -260,53 +271,57 @@
                             <button style="border: 1px solid white; margin-top: 10px; margin-left: 14px; width: 330px; height: 50px; font-size: 20px; color: #F3F3F3; background-color: #FF6600;">Tiến hành đặt hàng</button>
                         </a>
                     </div>
-                </div>
-                
+                </div>         
             </div>
+            
+            <!-- Giỏ hàng -->
             <div class="listsp">
-            <!-- <div class="sanpham1">
-                <div class="sp1">
-                    <div class="hinhanhsp">
-                        <img style="font-size: 15px; margin-top: -2px;" src="Images/anhgiohang.jpg" alt="">
-                    </div>
-                    <div class="tieude">
-                        <span>MARC JACOBS</span><br>
-                        <div class="mota">
-                            <span>Nước Hoa Nữ Marc Jacobs Daisy EDT 100ml</span>
+                <div class="sanpham1" ng-repeat="mypham in cartMyPham">
+                    <div class="sp1">
+                        <div class="hinhanhsp">
+                            <img style="font-size: 15px; margin-top: -2px;" ng-src="{{host+'/'+mypham.anhDaiDien}}" alt="">
                         </div>
-                        <div class="traitim">
-                            <i class="fa-regular fa-heart"></i>
-                            Yêu thích 
-                            <i class="fa-solid fa-x" style="padding-left: 20px;"></i>
-                            Xoá
-                        </div>                            
-                    </div>                   
-                </div> 
-                <div class="giatien1">
-                    <div class="giamoi">
-                        <p>2.000.000 <span class="dong">đ</span></p>                                                       
+                        <div class="tieude">
+                            <span>Innisfree</span><br>
+                            <div class="mota">
+                                <span>{{mypham.tenMP}}</span>
+                            </div>
+                            <div class="traitim">
+                                <i class="fa-regular fa-heart"></i>
+                                Yêu thích 
+                                <i class="fa-solid fa-x" style="padding-left: 20px;"></i>
+                                <button ng-click="XoaMP(mypham)" style="background-color: #F27280; border: none; height: 25px; width: 38px; 
+                                border-radius: 10px; font-size: 15px;">Xoá</button>
+                            </div>                            
+                        </div>                   
+                    </div> 
+                    <div class="giatien1">
+                        <div class="giamoi">
+                            <p>{{mypham.giaMoi}}<span class="dong">đ</span></p>                                                       
+                        </div>
+                        <div class="giagoc">
+                            <p>{{mypham.giaCu}}<span class="dong">đ</span></p>                                                       
+                        </div>
+                    </div> 
+                    <div class="sluong">
+                        <input id="sl" type="number" style="width: 40px; height: 30px; background-color:#F3F3F3; padding-left: 5px; font-size: 16px;" ng-model="mypham.quantity" ng-change="updateTotal(mypham)" min="1">
                     </div>
-                    <div class="giagoc">
-                        <p>3.570.000 <span class="dong">đ</span></p>                                                       
-                    </div>
-                </div> 
-                <div class="sluong">
-                    <input id="sl" type="number" style="width: 40px; height: 30px; background-color:#F3F3F3; padding-left: 5px; font-size: 16px;" value="1">
-                </div>
-                <div class="thanhtien1" id="thanhtien">
-                    <p>2.000.000 <span class="dong">đ</span></p>                                                                              
-                </div>                 
-            </div>             -->
+                    <div class="thanhtien1" id="thanhtien">
+                        <p>{{ThanhTien(mypham)}}<span class="dong">đ</span></p>
+                    </div>             
+                </div>                   
             </div>
+
             <hr> 
             <div class="dathang">
                 <div class="tinhtien">
                     <div class="tamtinh">
                         <p>Tạm tính:  </p>
                     </div>
-                    <div class="tien">
-                        <p id="giatien1">0<span class="dong">đ</span></p> 
-                    </div>                 
+                    <div class="tien" style="display: flex;">
+                        <p id="totalPrice" ng-bind="TongTienHoaDon() | currency:'':'0'"></p>
+                        <span ng-bind="'\u20AB'"></span>
+                    </div>               
                 </div>
                 <div class="VAT">
                     <p>(đã bao gồm VAT)</p>
@@ -323,9 +338,23 @@
         </div>     
     </div>  
     <div class="spdaxem">
-        <p style="font-size: 18px; color: rgb(71, 70, 70);">Sản phẩm đã xem</p>
-        <img src="Images/anhgiohang.jpg" alt="">
+        <div>
+            <p style="font-size: 18px; color: rgb(71, 70, 70);">Mỹ phẩm đã xem</p>
+        </div>
+        <div style="display: flex;">
+            <div>
+                <img src="Images/dt1.png" alt="" style="width: 80px; width: 80px; margin-top: 10px;">
+            </div>
+            <div>
+                <img src="Images/sp4.png" alt="" style="width: 80px; width: 80px; margin-top: 10px; margin-left: 10px;">
+            </div>
+            <div>
+                <img src="Images/sm3.png" alt="" style="width: 80px; width: 80px; margin-top: 10px; margin-left: 10px;">
+            </div>
+        </div>
+        
+        
     </div>
-    <script src="js/cart.js"></script>
+    <!-- <script src="js/cart.js"></script> -->
 </body>
 </html>

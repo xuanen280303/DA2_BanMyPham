@@ -75,7 +75,7 @@ input[type="radio"] {
     padding-top: 15px;
     padding-left: 18px;
     width: 645px;
-    height: 310px;
+    height: 370px;
     border-radius: 10px;
     background-color: #FFFFFF;
 }
@@ -101,19 +101,25 @@ li{
     font-weight: bold;
 }
 .sp1{
-    display: flex;
+    margin-top: 10px;
     margin-left: 10px;
-    flex-direction: column;
+}
+.baoquatsp{
+    display: flex;
 }
 .product-details {
     display: flex;
-    align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+    align-items: center; 
 }
 .hinhanhsp {
-    margin-right: 10px; /* Thêm khoảng cách giữa ảnh và tiêu đề */
+    margin-right: 10px; 
+}
+.mota {
+    display: block; 
 }
 .tieude{
-    margin-top: 10px;
+    flex: 1;
+    margin-top: 15px;
     font-weight: bold;
     margin-left: 10px;
 }
@@ -138,7 +144,6 @@ li{
 }
 .tien{
     margin-top: 9px;
-    margin-left: 140px;
     color: #FF6600;
 }
 .nhacnho{

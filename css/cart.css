@@ -35,6 +35,19 @@ body{
     font-size: 14.2px;
     color: black;
 }
+.xoahet{
+    margin-top: -10px;
+    background-color: #ff2d37;
+    color: #fff;
+    margin-left: 730px;
+    padding: 7px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
 .chitietsp{
     display: flex;
     width: 73%;

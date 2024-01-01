@@ -1,4 +1,4 @@
-var current_url_ad = "https://localhost:44386";
+var current_url_ad = "http://localhost:57708";
 var current_url_img = "http://localhost:8888";
 makeScript = function (url) {
 	var script = document.createElement('script');

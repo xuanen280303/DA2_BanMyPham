@@ -9,13 +9,13 @@ app.controller("MyPham", function ($scope, $http) {
     $scope.listMP;
     //xác định trang hiện tại.
     $scope.page = 1;
-    $scope.pageSize = 4;
+    $scope.pageSize = 3;
     $scope.GetMyPham = function () {
         $http({
             method: 'POST',
             headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
             data: { page: $scope.page, pageSize: $scope.pageSize },
-            url:  current_url_ad + '/api/MyPhamControllers/search'
+            url:  current_url_ad + '/api/MyPham-Admin/search'
             // Xử lý kết quả trả về từ API sau khi request được thực hiện. 
             //ds mỹ phẩm được gán vào $scope.listMP.
         }).then(function (response) {
@@ -33,13 +33,13 @@ app.controller("MyPham", function ($scope, $http) {
                 headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: {
                     page: $scope.page,
-                    pageSize: 10,
+                    pageSize: 3,
                     ten_mp: $scope.tenmp,
                     mota_mp: $scope.mota
                 },
-                url: current_url_ad + '/api/MyPhamControllers/search',
+                url: current_url_ad + '/api/MyPham-Admin/search',
             }).then(function (response) {
-                $scope.listBV = response.data.data;
+                $scope.listMP = response.data.data;
             });
         };
         $scope.GetMyPham();
@@ -55,7 +55,7 @@ app.controller("MyPham", function ($scope, $http) {
           $scope.page += 1;
         }    
           $scope.GetMyPham();
-      };
+    };
     
     $scope.host = current_url_img;
     $scope.ThemMP = function() {
@@ -65,7 +65,6 @@ app.controller("MyPham", function ($scope, $http) {
         var giamoi = document.getElementById("GiaMoi").value;
         var giacu = document.getElementById("GiaCu").value;
         var sl = document.getElementById("SL").value;
-        var hinhanh = document.getElementById("HinhAnh").value;
         var mota = document.getElementById("MoTa").value;
         var ghichu = document.getElementById("GhiChu").value;
         if (mamp == null || mamp== "") {
@@ -131,7 +130,7 @@ app.controller("MyPham", function ($scope, $http) {
                     moTa: mota,
                     ghiChu: ghichu
                 };
-                fetch(current_url_ad + '/api/MyPhamControllers/create-mypham', {
+                fetch(current_url_ad + '/api/MyPham-Admin/create-mypham', {
                     method: 'POST',
                     headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                     headers: {
@@ -149,6 +148,62 @@ app.controller("MyPham", function ($scope, $http) {
                     }
                 });    
             });    
+    };
+
+    $scope.SuaMP = function() {
+        var mamp = document.getElementById("MaMP").value;
+        var tenmp = document.getElementById("TenMP").value;
+        var maloai = document.getElementById("MaLoaiMP").value;
+        var giamoi = document.getElementById("GiaMoi").value;
+        var giacu = document.getElementById("GiaCu").value;
+        var sl = document.getElementById("SL").value;
+        var mota = document.getElementById("MoTa").value;
+        var ghichu = document.getElementById("GhiChu").value;
+        var file = document.getElementById("HinhAnh").files[0];
+        const formData = new FormData();
+            formData.append('file', file);
+            $http({
+                method: 'PUT',
+                headers: {
+                    "Authorization": 'Bearer ' + _user.Token,
+                    'Content-Type': undefined
+                },
+                data: formData,
+                url: current_url_ad + '/api/User/Upload',
+            }).then(function (res) { 
+                var CosmeticData = {
+                    maMP: mamp,
+                    tenMP: tenmp,
+                    maLoaiMP:maloai,
+                    giaMoi: giamoi,
+                    giaCu: giacu,
+                    slTon: sl,
+                    anhDaiDien:  res.data.filePath,
+                    moTa: mota,
+                    ghiChu: ghichu
+                };
+                debugger;
+                fetch(current_url_ad + '/api/MyPham-Admin/update-mypham', {
+                    method: 'POST',
+                    headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(CosmeticData)
+                })
+                .then(response => {
+                    // Kiểm tra nếu response từ server là OK
+                    if (response.ok) {
+                        alert('Cập nhật thông tin mỹ phẩm thành công!');
+                        location.reload();
+                    } else {
+                        console.error('Lỗi cập nhật dữ liệu!');
+                    }
+                })
+                .catch(error => {
+                    console.error('Lỗi kết nối đến máy chủ: ' + error);
+                });     
+            });       
     }
 
     $scope.XoaChon = function() {
@@ -175,7 +230,7 @@ app.controller("MyPham", function ($scope, $http) {
                 method: 'POST',
                 headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: dataToSend,
-                url: current_url_ad + '/api/MyPhamControllers/deleteS-mypham',
+                url: current_url_ad + '/api/MyPham-Admin/deleteS-mypham',
             }).then(function(response) {
                 $scope.listMP = response.data.data;
                 alert("Xóa thành công những mỹ phẩm đã chọn!");
@@ -216,51 +271,6 @@ function SuaMPicon(icon) {
     document.getElementById("GhiChu").value = ghichu;
 }
 
-function SuaMP() {
-    var mamp = document.getElementById("MaMP").value;
-    var tenmp = document.getElementById("TenMP").value;
-    var maloai = document.getElementById("MaLoaiMP").value;
-    var giamoi = document.getElementById("GiaMoi").value;
-    var giacu = document.getElementById("GiaCu").value;
-    var sl = document.getElementById("SL").value;
-    var hinhanh = document.getElementById("HinhAnh").value;
-    var mota = document.getElementById("MoTa").value;
-    var ghichu = document.getElementById("GhiChu").value;
-    // Tạo đối tượng BaiVietData chứa thông tin cập nhật
-    var MyPhamData = {
-        maMP: mamp,
-        tenMP: tenmp,
-        maLoaiMP:maloai,
-        giaMoi: giamoi,
-        giaCu: giacu,
-        slTon: sl,
-        anhDaiDien: hinhanh,
-        moTa: mota,
-        ghiChu: ghichu
-    };
-
-    fetch(current_url_ad + '/api/MyPhamControllers/update-mypham', {
-        method: 'POST',
-        headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(MyPhamData)
-    })
-    .then(response => {
-        // Kiểm tra nếu response từ server là OK
-        if (response.ok) {
-            alert('Cập nhật thông tin mỹ phẩm thành công!');
-            location.reload();
-        } else {
-            console.error('Lỗi cập nhật dữ liệu!');
-        }
-    })
-    .catch(error => {
-        console.error('Lỗi kết nối đến máy chủ: ' + error);
-    });
-}
-
 document.addEventListener('click', function (event) {
     // Lấy bài viết mà người dùng đã click
     var target = event.target;
@@ -278,7 +288,7 @@ document.addEventListener('click', function (event) {
 
 function XoaMP(maMP) {
     // Gửi yêu cầu DELETE đến API để xóa bài viết
-    fetch(current_url_ad + '/api/MyPhamControllers/delete-mypham/' + maMP, {
+    fetch(current_url_ad + '/api/MyPham-Admin/delete-mypham/' + maMP, {
         method: 'DELETE',
         headers: {
             "Authorization": 'Bearer ' + _user.token,

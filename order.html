@@ -7,8 +7,12 @@
     <link rel="icon" href="Images/logo1.jpg">
     <link rel="stylesheet" href="css/order.css">
     <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css" />
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="Angular/angular.min.js"></script>
+    <script src="Angular/global.js"></script>
+    <script src="Angular/dathang.js"></script>
 </head>
-<body>
+<body ng-app="AppBanHang" ng-controller="DatHang">
     <header>
         <div class="header_support">
             <a href="index.html">
@@ -25,7 +29,7 @@
                     </div>
                     <div class="nharieng">
                         <div>
-                            <button style="margin-top: 5px; background-color: #326E51; color: white;">Nhà riêng</button>
+                            <button style="margin-top: 5px; background-color: #326E51; color: white; border: none;">Nhà riêng</button>
                         </div>
                         <div class="tennguoinhan">
                             <span>Xuân Én - 0987233625</span>
@@ -57,18 +61,21 @@
                     </div>                                    
                 </div>
 
-                <div class="benduoi">
+                <div class="benduoi" ng-controller="DatHang">
                     <div class="thongtin">
                         <span>Thông tin xuất hoá đơn</span>
                     </div>
                     <div>
-                        <textarea id="email" placeholder="  Nhập email nhận hoá đơn" style="width: 615px; height: 40px; margin-top: 5px; border-radius: 10px;"></textarea>
+                        <textarea id="ten" ng-model="nguoiNhan.ten" placeholder="  Nhập tên người nhận hoá đơn" style="width: 615px; height: 40px; margin-top: 5px; border-radius: 5px;"></textarea>
                     </div>
                     <div>
-                        <textarea id="nguoinhan" placeholder="  Nhập tên người nhận hoá đơn" style="width: 615px; height: 40px; margin-top: 5px; border-radius: 10px;"></textarea>
+                        <textarea id="sdt" ng-model="nguoiNhan.sdt" placeholder="  Nhập số điện thoại người nhận hoá đơn" style="width: 615px; height: 40px; margin-top: 5px; border-radius: 5px;"></textarea>
                     </div>
                     <div>
-                        <textarea id="thongtin" placeholder="  Thông tin bổ sung" style="width: 615px; height: 80px; margin-top: 5px; border-radius: 10px;"></textarea>
+                        <textarea id="diachi" ng-model="nguoiNhan.diaChi" placeholder="  Nhập địa chỉ người nhận hoá đơn" style="width: 615px; height: 40px; margin-top: 5px; border-radius: 5px;"></textarea>
+                    </div>
+                    <div>
+                        <textarea id="thongtin" ng-model="nguoiNhan.thongTin" placeholder="  Thông tin bổ sung" style="width: 615px; height: 80px; margin-top: 5px; border-radius: 5px;"></textarea>
                     </div>
                     <div class="thongtin" style="margin-top: 5px; font-size: 22px;">
                         <span>Lưu Ý</span>
@@ -83,24 +90,31 @@
                 <div class="donhang">
                     <span>Đơn hàng</span>
                 </div>
-                <div class="sp1">
-                    <div class="hinhanhsp">
-                        <img style="width: 50px; height: 50px;" src="Images/anhgiohang.jpg" alt="">
+                <div class="sp1" ng-repeat="mypham in cartMyPham">
+                    <div class="baoquatsp">
+                        <div class="hinhanhsp">
+                            <img style="width: 70px; height: 70px;" ng-src="{{host+'/'+mypham.anhDaiDien}}" alt="">
+                        </div>
+                        <div class="tieude">
+                            <span>Innisfree</span><br>
+                            <div class="mota">
+                                <span>{{mypham.tenMP}}</span>
+                            </div>                        
+                        </div>     
                     </div>
-                    <div class="tieude">
-                        <span>MARC JACOBS</span><br>
-                        <div class="mota">
-                            <span>Nước Hoa Nữ Marc Jacobs Daisy EDT 100ml</span>
-                        </div>                        
-                    </div>                   
-                </div>
+                    <div class="baoquatgia" style="display: flex;">
+                        <p style="margin-left: 18px;">Tổng tiền:</p>
+                        <p style="margin-left: 210px; font-weight: bold; color: #FF6600;">{{ThanhTien(mypham)}}<span class="dong">đ</span></p>
+                    </div>                             
+                </div>             
                 <hr style="width: 340px; margin-top: 10px;">
                 <div class="tamtinh">
                     <div class="tamtinh1">
                         <p>Tạm tính:</p>
                     </div>
-                    <div class="giatien">
-                        <p>2.090.000  <span class="dong">đ</span></p>
+                    <div class="giatien" style="display: flex; margin-left: 220px;">
+                        <p id="totalPrice" ng-bind="TongTienHoaDon() | currency:'':'0'"></p>
+                        <span style="margin-top: 18px;" ng-bind="'\u20AB'"></span>
                     </div>
                 </div>
                 <div class="tamtinh" style="margin-top: -20px;">
@@ -120,23 +134,23 @@
                     </div>
                 </div>
                 <hr style="width: 340px; margin-top: 5px;">
-                <div class="thanhtienn">
+                <div class="thanhtienn" style="display: flex;">
                     <div class="tieude">
-                        <p>Thành tiền</p>
+                        <p style="margin-top: 30px;">Thành tiền</p>
                     </div>
-                    <div class="tien">
-                        <p>2.090.000đ</p>
+                    <div class="tien" style="display: flex; margin-left: -20px;">
+                        <p id="totalPrice" ng-bind="TongTienHoaDon() | currency:'':'0'"></p>
+                        <span style="margin-top: 24px;" ng-bind="'\u20AB'"></span>
                     </div>
                 </div>
                 <div class="nhacnho">
                     <p>Đã bao gồm VAT, phí đóng gói, phí vận chuyển và các chi phí khác vui lòng xem chính sách vận chuyển</p>
                 </div>
                 <div>
-                    <button id="dathang" style="border: 1px solid white; margin-left: 20px; width: 345px; height: 50px; font-size: 21px; color: #F3F3F3; background-color: #FF6600; cursor: pointer;">ĐẶT HÀNG</button>
+                    <button ng-click="DatHang()" style="border: 1px solid white; margin-left: 20px; width: 345px; height: 50px; font-size: 21px; color: #F3F3F3; background-color: #FF6600; cursor: pointer;">ĐẶT HÀNG</button>
                 </div>
             </div>
         </div>
     </div>  
 </body>
-<script src="js/order.js"></script>
 </html>

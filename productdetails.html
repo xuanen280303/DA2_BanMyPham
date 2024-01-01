@@ -74,7 +74,7 @@
                   <span class="header__cart-notice">
                     3
                   </span>
-                  <i class="fas fa-shopping-cart header__cart-icon"></i>
+                  <a href="cart.html"><i  class="fas fa-shopping-cart header__cart-icon"></i></a>         
                 </div>
               </div>
                 <ul id="main-menu">
@@ -202,13 +202,13 @@
         <div class="sanpham-bentrai">
           <div class="bentrai1">
             <div class="hinhanh">
-              <img src="{{mypham.anhDaiDien}}" alt="" />
+              <img src="{{host+'/'+mypham.anhDaiDien}}" alt="" />
             </div>
           </div>
           <div class="bentrai2">
             <div class="tensp">
               <img src="Images/icon_nowfree.png" alt="" />
-              <p>Chloé</p>
+              <p>Innisfree</p>
             </div>
             <div class="tittle1">
               <p>{{mypham.tenMP}}</p>
@@ -248,12 +248,12 @@
             <div class="giathitruong">
               <p>Giá thị trường:</p>
               <p>{{mypham.giaCu}}</p>
-              <p>Tiết kiệm: 1.447.000 ₫</p>
+              <p>Tiết kiệm: 150.000 ₫</p>
               <p style="color: #ff6600">(-34%)</p>
             </div>
             <div class="dungtich">
               <p>Dung tích: 75ml</p>
-              <img src="{{mypham.anhDaiDien}}" alt="" />
+              <img src="{{host+'/'+mypham.anhDaiDien}}" alt="" />
             </div>
             <div class="giaohang">
               <img src="Images/icon_nowfree.png" alt="" />
@@ -274,9 +274,9 @@
                   <p>Còn sản phẩm</p>
                 </div>
               </div>
-              <div class="nut2">
+              <div class="nut2" ng-click="addToCart(mypham)" style="cursor: pointer;" >
                 <i class="fas fa-shopping-cart"></i>
-                <p>Giỏ hàng</p>
+                <p >Giỏ hàng</p>
               </div>
               <div class="nut3">
                 <div class="nut3_tren">
