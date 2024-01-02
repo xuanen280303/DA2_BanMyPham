@@ -6,7 +6,7 @@ function Login_admin() {
   //// Sử dụng AJAX để gửi yêu cầu đăng nhập đến API
     $.ajax({
       type: "POST",
-      url: "https://localhost:44386/api/User/login",
+      url: "http://localhost:57708/api/User-Admin/login",
       //Ngăn jQuery chuyển đổi dữ liệu thành chuỗi truy vấn
       processData: false,
       contentType: "application/json",  

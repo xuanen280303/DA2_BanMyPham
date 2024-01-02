@@ -15,7 +15,7 @@ app.controller("BaiViet", function ($scope, $http) {
             method: 'POST',
             headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
             data: { page: $scope.page, pageSize: $scope.pageSize },
-            url:  current_url_ad + '/api/BaiVietControllers/search'
+            url:  current_url_ad + '/api/BaiViet-Admin/search'
             // Xử lý kết quả trả về từ API sau khi request được thực hiện. 
             //ds bài viết được gán vào $scope.listBV.
         }).then(function (response) {
@@ -37,7 +37,7 @@ app.controller("BaiViet", function ($scope, $http) {
                     tieu_de: $scope.tieude,
                     noi_dung: $scope.noidung
                 },
-                url: current_url_ad + '/api/BaiVietControllers/search',
+                url: current_url_ad + '/api/BaiViet-Admin/search',
             }).then(function (response) {
                 $scope.listBV = response.data.data;
             });
@@ -69,7 +69,7 @@ app.controller("BaiViet", function ($scope, $http) {
                 method: 'POST',
                 headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: dataToSend,
-                url: current_url_ad + '/api/BaiVietControllers/deleteS-baiviet',
+                url: current_url_ad + '/api/BaiViet-Admin/deleteS-baiviet',
             }).then(function(response) {
                 $scope.listBV = response.data.data;
                 alert("Xóa thành công những bài viết đã chọn!");
@@ -131,7 +131,7 @@ function ThemBV() {
         ngayKT: ngaykt,
         noiDung: noidung
     };
-    fetch(current_url_ad + '/api/BaiVietControllers/create-baiviet', {
+    fetch(current_url_ad + '/api/BaiViet-Admin/create-baiviet', {
         method: 'POST',
         headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
@@ -190,7 +190,7 @@ function SuaBV() {
         noiDung: noidung
     };
 
-    fetch(current_url_ad + '/api/BaiVietControllers/update-baiviet', {
+    fetch(current_url_ad + '/api/BaiViet-Admin/update-baiviet', {
         method: 'POST',
         headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
@@ -230,7 +230,7 @@ document.addEventListener('click', function (event) {
 
 function XoaBV(maBV) {
     // Gửi yêu cầu DELETE đến API để xóa bài viết
-    fetch(current_url_ad + '/api/BaiVietControllers/delete-baiviet/' + maBV, {
+    fetch(current_url_ad + '/api/BaiViet-Admin/delete-baiviet/' + maBV, {
         method: 'DELETE',
         headers: {
             "Authorization": 'Bearer ' + _user.token,

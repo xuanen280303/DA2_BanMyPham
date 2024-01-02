@@ -14,7 +14,7 @@ app.controller("NhaCC", function ($scope, $http) {
             method: 'POST',
             headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
             data: { page: $scope.page, pageSize: $scope.pageSize },
-            url:  current_url_ad + '/api/NhaCCControllers/search'
+            url:  current_url_ad + '/api/NhaCC-Admin/search'
         }).then(function (response) {
             $scope.listNCC = response.data.data;
         });
@@ -35,7 +35,7 @@ app.controller("NhaCC", function ($scope, $http) {
                     ten_ncc: $scope.tenncc,
                     dia_chincc: $scope.diachincc
                 },
-                url: current_url_ad + '/api/NhaCCControllers/search',
+                url: current_url_ad + '/api/NhaCC-Admin/search',
             }).then(function (response) {
                 $scope.listNCC = response.data.data;
             });
@@ -66,7 +66,7 @@ app.controller("NhaCC", function ($scope, $http) {
                 method: 'POST',
                 headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: dataToSend,
-                url: current_url_ad + '/api/NhaCCControllers/deleteS-nhacc',
+                url: current_url_ad + '/api/NhaCC-Admin/deleteS-nhacc',
             }).then(function(response) {
                 $scope.listNCC = response.data.data;
                 alert("Xóa thành công những nhà cung cấp đã chọn!");
@@ -118,7 +118,7 @@ function ThemNhaCC() {
         diaChiNCC: diachi
     };
 
-    fetch(current_url_ad + '/api/NhaCCControllers/create-nhacc', {
+    fetch(current_url_ad + '/api/NhaCC-Admin/create-nhacc', {
         method: 'POST',
         headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
@@ -166,7 +166,7 @@ function SuaNCC() {
         diaChiNCC: diachi
     };
 
-    fetch(current_url_ad + '/api/NhaCCControllers/update-nhacc', {
+    fetch(current_url_ad + '/api/NhaCC-Admin/update-nhacc', {
         method: 'POST',
         headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
@@ -199,7 +199,7 @@ document.addEventListener('click', function (event) {
 });
 
 function XoaNCC(maNCC) {
-    fetch(current_url_ad + '/api/NhaCCControllers/delete-nhacc/' + maNCC, {
+    fetch(current_url_ad + '/api/NhaCC-Admin/delete-nhacc/' + maNCC, {
         method: 'DELETE',
         headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {

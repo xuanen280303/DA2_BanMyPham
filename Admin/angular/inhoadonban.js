@@ -4,27 +4,26 @@ if (!_user) {
 }
 
 var app = angular.module('AppAdmin', []);
-app.controller("inHDN", function ($scope, $http, $timeout) {
-    //-----------------------------IN HÓA ĐƠN NHẬP--------------------------------
-    $scope.maHDN;
+app.controller("inHDB", function ($scope, $http, $timeout) {
+    $scope.maHDB;
     $scope.listBill;
     $scope.detailBill = [];
     $scope.getDetailBill = function() {
         var key = 'id';
-		var maHDN = window.location.search.substring(window.location.search.indexOf(key)+key.length+1);
+		var maHDB = window.location.search.substring(window.location.search.indexOf(key)+key.length+1);
         $http({
         method: "GET",
         headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
-        url: current_url_ad + '/api/HoaDonNhapControllers/get-hoadonnhap-id/'+ maHDN,
+        url: current_url_ad + '/api/HoaDonBan-Admin/get-hoadonban-id/'+ maHDB,
         }).then(function (response) {
         $scope.listBill = response.data;
-        $scope.detailBill = $scope.listBill.list_json_chitiethoadonnhap;
-        $scope.maHDN = maHDN;
+        $scope.detailBill = $scope.listBill.list_json_chitiethoadonban;
+        $scope.maHDB = maHDB;
         });
     }
     $scope.getDetailBill();
 
-    $scope.inHoaDonNhap = function () {
+    $scope.inHoaDonBan = function () {
         $timeout(function () {
             window.print();
         }, 2000);

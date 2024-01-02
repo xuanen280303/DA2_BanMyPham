@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    margin-top: 15px;
+    width: 100%;
+}
+
+body {
+    width: 900px;
+    margin: 0 auto;
+}
+
+tr {
+    line-height: 27px;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+.dam {
+    font-weight: bold;
+}
+.le {
+    margin-bottom: 4px;
+    font-size: 16px;
+}
+.kethop{
+    display: flex;
+    margin-bottom: 4px;
+    font-size: 16px;
+}
+.kethop1{
+    display: flex;
+    font-weight: bold;
+    margin-top: 30px;
+    font-size: 16px;
+}
+.kethop2{
+    display: flex;
+    font-style: italic;
+    margin-top: 10px;
+}

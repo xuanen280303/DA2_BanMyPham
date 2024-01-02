@@ -14,7 +14,7 @@ app.controller("KhachHang", function ($scope, $http) {
             method: 'POST',
             headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
              data: { page: $scope.page, pageSize: $scope.pageSize },
-            url:  current_url_ad + '/api/KhachHangControllers/search'
+            url:  current_url_ad + '/api/KhachHang-Admin/search'
         }).then(function (response) {
             $scope.listKH = response.data.data;
         });
@@ -35,7 +35,7 @@ app.controller("KhachHang", function ($scope, $http) {
                     ten_kh: $scope.tenkh,
                     dia_chikh: $scope.diachikh
                 },
-                url: current_url_ad + '/api/KhachHangControllers/search',
+                url: current_url_ad + '/api/KhachHang-Admin/search',
             }).then(function (response) {
                 $scope.listKH = response.data.data;
             });
@@ -65,7 +65,7 @@ app.controller("KhachHang", function ($scope, $http) {
                 method: 'POST',
                 headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: dataToSend,
-                url: current_url_ad + '/api/KhachHangControllers/deleteS-khachhang',
+                url: current_url_ad + '/api/KhachHang-Admin/deleteS-khachhang',
             }).then(function(response) {
                 $scope.listKH = response.data.data;
                 alert("Xóa thành công những khách hàng đã chọn!");
@@ -117,7 +117,7 @@ function ThemKH() {
         diaChiKH: diachi
     };
 
-    fetch(current_url_ad + '/api/KhachHangControllers/create-khachhang', {
+    fetch(current_url_ad + '/api/KhachHang-Admin/create-khachhang', {
         method: 'POST',
         headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
@@ -165,7 +165,7 @@ function SuaKH() {
         diaChiKH: diachi
     };
 
-    fetch(current_url_ad + '/api/KhachHangControllers/update-khachhang', {
+    fetch(current_url_ad + '/api/KhachHang-Admin/update-khachhang', {
         method: 'POST',
         headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
@@ -198,7 +198,7 @@ document.addEventListener('click', function (event) {
 });
 
 function XoaKH(idkh) {
-    fetch(current_url_ad + '/api/KhachHangControllers/delete-khachhang/' + idkh, {
+    fetch(current_url_ad + '/api/KhachHang-Admin/delete-khachhang/' + idkh, {
         method: 'DELETE',
         headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {

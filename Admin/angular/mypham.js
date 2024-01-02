@@ -113,11 +113,11 @@ app.controller("MyPham", function ($scope, $http) {
             $http({
                 method: 'PUT',
                 headers: {
-                    "Authorization": 'Bearer ' + _user.Token,
+                    "Authorization": 'Bearer ' + _user.token,
                     'Content-Type': undefined
                 },
                 data: formData,
-                url: current_url_ad + '/api/User/Upload',
+                url: current_url_ad + '/api/User-Admin/Upload',
             }).then(function (res) { 
                 var MyPhamData = {
                     maMP: mamp,
@@ -165,11 +165,11 @@ app.controller("MyPham", function ($scope, $http) {
             $http({
                 method: 'PUT',
                 headers: {
-                    "Authorization": 'Bearer ' + _user.Token,
+                    "Authorization": 'Bearer ' + _user.token,
                     'Content-Type': undefined
                 },
                 data: formData,
-                url: current_url_ad + '/api/User/Upload',
+                url: current_url_ad + '/api/User-Admin/Upload',
             }).then(function (res) { 
                 var CosmeticData = {
                     maMP: mamp,

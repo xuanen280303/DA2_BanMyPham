@@ -1,0 +1,32 @@
+.baoquatall{
+    margin-left: 50px;
+}
+.sp1{
+    margin-top: 10px;
+    display: flex;
+    margin-left: 10px;
+    flex-wrap: wrap;
+}
+.baoquatsp{
+    display: flex;
+}
+.product-details {
+    display: flex;
+    align-items: center; 
+}
+.hinhanhsp {
+    margin-right: 10px; 
+}
+.mota {
+    display: block; 
+}
+.tieude{
+    flex: 1;
+    margin-top: 15px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.danhsach-hdb{
+    width: 1300px;
+    height: 500px;
+}

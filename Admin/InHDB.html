@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="color: transparent;">IN HOÁ ĐƠN BÁN</title>
+    <link rel="icon" href="Hinhanh/logo1.jpg">
+    <link rel="stylesheet" href="./css/in_hoadonban.css">
+    <script src="angular/angular.min.js"></script>
+    <script src="angular/globalAdmin.js"></script>
+    <script src="angular/inhoadonban.js"></script>
+</head>
+<body ng-app="AppAdmin" ng-controller="inHDB" ng-init="inHoaDonBan()">
+    <section style="text-align: center; margin: 25px 0;">
+        <h1>HÓA ĐƠN BÁN HÀNG</h1>       
+    </section>
+    <div class="le dam">Tên cửa hàng: Hasaki - Innisfree</div>
+    <div class="le">Mã số thuế: 123456789</div>
+    <div class="le">Địa chỉ: Đình Cao, Phù Cừ, Hưng Yên</div>
+    <div class="kethop">
+        <p>Số điện thoại: 0987.233.625</p>
+        <p style="margin-left: 380px;">Số tài khoản: 6898928032003</p>
+    </div>
+    <!-- <div class="le dam">Tên khách hàng: Trần Thị Xuân Én</div>
+    <div class="le">Mã nhân viên: {{listBill.maNV}}</div> -->
+    <div class="le">Họ tên khách hàng: {{listBill.hoTenKH}}</div>
+    <div class="le">Số điện thoại khách hàng: {{listBill.sdtkh}}</div>
+    <div class="le">Địa chỉ khách hàng: {{listBill.diaChiKH}}</div>
+    <div class="kethop">
+        <p>Ghi chú:</p>
+        <p style="margin-left: 508px;">Số tài khoản: 0969588280</p>
+    </div>
+
+    <table style="margin-top: 30px;">
+        <tr style="background: #326E51; color: #fff;">
+            <th>Mã CTHDB</th>
+            <th>Mã HDB</th>
+            <th>Mã mỹ phẩm</th>
+            <th>Tên mỹ phẩm</th>
+            <th>Số lượng</th>
+            <th>Tổng tiền</th>
+        </tr>
+        <tr ng-repeat="x in detailBill">
+            <td>{{x.maCTHDB}}</td>
+            <td>{{x.maHDB}}</td>    
+            <td>{{x.maMP}}</td>
+            <td>{{x.tenMP}}</td>
+            <td>{{x.slBan}}</td>
+            <td>{{x.tongTien | number}}</td>
+        </tr>
+        <tr> 
+            <td colspan= "5" class="dam">Tổng tiền hóa đơn nhập</td>
+            <td class="dam">{{listBill.tongTien | number}}</td>
+        </tr>
+    </table>
+    <div class="kethop1">
+        <p style="margin-left: 153px;">Người mua hàng</p>
+        <p style="margin-left: 370px;">Người bán hàng</p>
+    </div>
+    <div class="kethop2">
+        <p style="margin-left: 150px;">(Ký, ghi rõ họ tên)</p>
+        <p style="margin-left: 365px;">(Ký, ghi rõ họ tên)</p>
+    </div>
+</body>
+</html>

@@ -14,7 +14,7 @@ app.controller("NhanVien", function ($scope, $http) {
             method: 'POST',
             headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
             data: { page: $scope.page, pageSize: $scope.pageSize },
-            url:  current_url_ad + '/api/NhanVienControllers/search'
+            url:  current_url_ad + '/api/NhanVien-Admin/search'
         }).then(function (response) {
             $scope.listNV = response.data.data;
         });
@@ -35,7 +35,7 @@ app.controller("NhanVien", function ($scope, $http) {
                     ten_nv: $scope.tennv,
                     dia_chinv: $scope.diachinv
                 },
-                url: current_url_ad + '/api/NhanVienControllers/search',
+                url: current_url_ad + '/api/NhanVien-Admin/search',
             }).then(function (response) {
                 $scope.listNV = response.data.data;
             });
@@ -65,7 +65,7 @@ app.controller("NhanVien", function ($scope, $http) {
                 method: 'POST',
                 headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
                 data: dataToSend,
-                url: current_url_ad + '/api/NhanVienControllers/deleteS-nhanvien',
+                url: current_url_ad + '/api/NhanVien-Admin/deleteS-nhanvien',
             }).then(function(response) {
                 $scope.listNV = response.data.data;
                 alert("Xóa thành công những nhân viên đã chọn!");
@@ -141,7 +141,7 @@ function ThemNV() {
         email:email
     };
 
-    fetch(current_url_ad + '/api/NhanVienControllers/create-nhanvien', {
+    fetch(current_url_ad + '/api/NhanVien-Admin/create-nhanvien', {
         method: 'POST',
         headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
@@ -205,7 +205,7 @@ function SuaNV() {
         email:email
     };
 
-    fetch(current_url_ad + '/api/NhanVienControllers/update-nhanvien', {
+    fetch(current_url_ad + '/api/NhanVien-Admin/update-nhanvien', {
         method: 'POST',
         headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {
@@ -238,7 +238,7 @@ document.addEventListener('click', function (event) {
 });
 
 function XoaNV(manv) {
-    fetch(current_url_ad + '/api/NhanVienControllers/delete-nhanvien/' + manv, {
+    fetch(current_url_ad + '/api/NhanVien-Admin/delete-nhanvien/' + manv, {
         method: 'DELETE',
         headers: { "Authorization": 'Bearer ' + _user.token,"Content-Type": "application/json"},
         headers: {

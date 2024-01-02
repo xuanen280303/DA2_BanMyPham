@@ -31,14 +31,24 @@ app.controller('TrangChu', function($scope, $http) {
     };   
 	$scope.GetMaLoaitheoDanhMuc();
 
-     // Hàm tìm kiếm mỹ phẩm
-    // $scope.TimKiemMyPham = function(key) {
-    //     $http({
-    //         method: 'POST',
-    //         data: { page: $scope.pagedm, pageSize: $scope.pageSizedm, maloai_mp: maloai, key: key},
-    //         url: current_url + '/api/MyPhamControllers/search-loaimypham',
-    //     }).then(function(response) {
-    //         $scope.listGetDM = response.data.data;
-    //     });
-    // };
+    // $scope.host = current_url_img;
+    // document.getElementById('btnSearch').addEventListener('click', function() {
+    //     $scope.listMP;
+    //     $scope.page = 1;
+    //     $scope.GetMyPham = function () {
+    //         $http({
+    //             method: 'POST',
+    //             data: {
+    //                 page: $scope.page,
+    //                 pageSize: 20,
+    //                 ten_mp: $scope.tenmp,
+    //                 mota_mp: $scope.motamp
+    //             },
+    //             url: current_url_ad + '/api/MyPham-User/search-mypham',
+    //         }).then(function (response) {
+    //             $scope.listMP = response.data.data;
+    //         });
+    //     };
+    //     $scope.GetMyPham();
+    // });
 });
